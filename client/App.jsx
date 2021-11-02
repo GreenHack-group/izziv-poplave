@@ -10,6 +10,12 @@ import { StationScreen } from './screens/StationScreen'
 
 const Stack = createNativeStackNavigator()
 
+/**
+ * Application entry point
+ * mainly just used to handle navigation
+ * and global logic that needs to be executed
+ * on app start
+ */
 export default function App() {
     return (
         <NavigationContainer>
