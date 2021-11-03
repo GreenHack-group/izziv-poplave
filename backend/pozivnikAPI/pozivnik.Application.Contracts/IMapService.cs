@@ -9,6 +9,6 @@ namespace pozivnik.Application.Contracts
 {
     public interface IMapService
     {
-        public String GetStationList();
+        public Task<List<HydrologicalStationDto>> GetStationList();
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using pozivnik.Application.Contracts;
 using pozivnik.Core.Station;
+using System.Xml;
 
 namespace pozivnik.API.Controllers
 {
@@ -19,16 +20,19 @@ namespace pozivnik.API.Controllers
             _mapService = mapService;
         }
 
+
         // ..../api/Map/stationMarkers
         [HttpGet]
         [Route("stationMarkers")]
-        public String FetchAllStationMarkers() {
+        public async Task<List<HydrologicalStationDto>> FetchAllStationMarkers() {
 
+            //var xml = await getAllStationsXML();
             //Klicala interface
-            var response = _mapService.GetStationList();
+            var response = await _mapService.GetStationList();
 
             return response;
         }
         
+
     }
 }

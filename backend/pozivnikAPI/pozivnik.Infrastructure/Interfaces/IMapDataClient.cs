@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pozivnik.Core.Station;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace pozivnik.Infrastructure.Interfaces
     //e.g. Fetch + All + Stations (+ XML)
     public interface IMapDataClient
     {
-        public String FetchAllStationsXML();
+        public Task<List<HydrologicalStationDto>> FetchAllStationsXML();
     }
 }

@@ -8,7 +8,7 @@ namespace pozivnik.Core.Station
 {
     public class HydrologicalStationDto
     {
-        public String? StationName { get; set; }
+        public int StationId { get; set; } //sifra
 
         public float Longitude { get; set; }
 

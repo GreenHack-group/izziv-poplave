@@ -18,9 +18,9 @@ namespace pozivnik.Application
             _mapDataClient = mapDataClient;
         }
 
-        public String GetStationList() 
+        public async Task<List<HydrologicalStationDto>> GetStationList() 
         {
-            var response = _mapDataClient.FetchAllStationsXML();
+            var response = await _mapDataClient.FetchAllStationsXML();
 
             return response;
         }
