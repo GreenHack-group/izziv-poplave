@@ -31,8 +31,10 @@ namespace pozivnik.Infrastructure.Implementation
 
                 foreach (XmlNode xn in xnList)
                 {
-                    HydrologicalStationDto temp = new HydrologicalStationDto { 
+                    HydrologicalStationDto temp = new HydrologicalStationDto {
                         StationId = int.Parse(xn.Attributes["sifra"].Value),
+                        River = xn["reka"].InnerText,
+                        MeasuringPoint = xn["merilno_mesto"].InnerText,
                         Longitude = float.Parse(xn.Attributes["ge_dolzina"].Value),
                         Latitude = float.Parse(xn.Attributes["ge_sirina"].Value)
                     };
