@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text, Dimensions } from 'react-native'
-import { StationProps } from './types'
+import { StationProps } from '../../shared/types'
 import { MaterialIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import theme from '../../shared/theme'
@@ -13,7 +13,7 @@ export const ListWidget = (props) => (
                 size={48}
                 color={theme.COLORS.primary}
             />
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title}>{props.measuringPoint}</Text>
         </View>
         <View style={styles.rightWrapper}>
             <AntDesign

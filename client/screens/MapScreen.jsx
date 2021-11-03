@@ -36,7 +36,11 @@ export const MapScreen = (props) => {
 
     return (
         <Container>
-            <Map dimensions={dimensions} />
+            <Map
+                markers={stations}
+                dimensions={dimensions}
+                isLoading={isLoading}
+            />
             <BottomDweller callback={handleDwellerChanged}>
                 <StationList
                     stations={stations}

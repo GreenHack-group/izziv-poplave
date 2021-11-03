@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 
 // Backend DTO object
 const StationDTO = {
-    StationName: PropTypes.string,
-    Longitude: PropTypes.number.isRequired,
-    Latitude: PropTypes.number.isRequired,
+    measuringPoint: PropTypes.string,
+    river: PropTypes.string,
+    longitude: PropTypes.number.isRequired,
+    latitude: PropTypes.number.isRequired,
 }
 
 export const StationProps = {
