@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, Text, View, StyleSheet } from 'react-native'
+import { Dimensions, View, StyleSheet } from 'react-native'
+import { fetchStations } from '../Api/BackendAPI'
 import { Container } from '../components/Container'
 import { Map } from '../components/Map'
 import { BottomDweller } from '../components/BottomDweller'
-import theme from '../shared/theme'
+import { StationList } from '../components/StationList'
 
 /**
  * Screen with a map widget
@@ -12,33 +13,40 @@ import theme from '../shared/theme'
  * @returns
  */
 export const MapScreen = (props) => {
-    const dimensions = Dimensions.get('window')
-    // Ha
-    const handleDwellerChanged = (index) => {
-        console.log('handleSheetChanges', index)
+    const [stations, setStations] = useState([])
+    const [isLoading, setLoading] = useState(false)
+
+    useEffect(() => {
+        retrieveStationsFromAPI()
+    }, [])
+
+    const retrieveStationsFromAPI = async () => {
+        setLoading(true)
+        console.log('Stations fetching ...')
+        const data = await fetchStations()
+        setLoading(false)
+        setStations(data)
     }
+
+    const dimensions = Dimensions.get('window')
+    const handleDwellerChanged = (index) => {}
+
+    const handleInfoPress = (stationId) =>
+        props.navigation.navigate('Station', { stationId })
 
     return (
         <Container>
             <Map dimensions={dimensions} />
             <BottomDweller callback={handleDwellerChanged}>
-                <View style={styles.dwellerContainer}>
-                    {/* TODO: Create card of stations to quickly navigate */}
-                    <Text>Station 1 🎉</Text>
-                    <Text>Station 2 🎉</Text>
-                    <Text>Station 3 🎉</Text>
-                    <Text>Station 4 🎉</Text>
-                </View>
+                <StationList
+                    stations={stations}
+                    isLoading={isLoading}
+                    onInfoPress={handleInfoPress}
+                />
             </BottomDweller>
         </Container>
     )
 }
-
-const styles = StyleSheet.create({
-    dwellerContainer: {
-        padding: theme.LAYOUT.paddingMedium,
-    },
-})
 
 MapScreen.propTypes = {
     navigation: PropTypes.object,

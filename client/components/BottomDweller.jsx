@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useRef } from 'react'
+import { StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import BottomSheet from '@gorhom/bottom-sheet'
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
+import theme from '../shared/theme'
 
 const SNAP_POINTS = {
     CLOSED: 0,
@@ -8,9 +10,8 @@ const SNAP_POINTS = {
 }
 
 export const BottomDweller = (props) => {
-    // config for dweller
     const bottomSheetRef = useRef(null)
-    const snapPoints = useMemo(() => ['25%', '50%'], [])
+    const snapPoints = useMemo(() => ['25%', '75%'], [])
     const handleSheetChanges = useCallback(props.callback, [])
 
     return (
@@ -20,10 +21,18 @@ export const BottomDweller = (props) => {
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
         >
-            {props.children}
+            <BottomSheetScrollView style={styles.dwellerContainer}>
+                {props.children}
+            </BottomSheetScrollView>
         </BottomSheet>
     )
 }
+
+const styles = StyleSheet.create({
+    dwellerContainer: {
+        padding: theme.LAYOUT.paddingMedium,
+    },
+})
 
 BottomDweller.propTypes = {
     children: PropTypes.oneOfType([
