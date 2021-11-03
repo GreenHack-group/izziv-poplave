@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\pozivnik.Application.Contracts\pozivnik.Application.Contracts.csproj" />
+    <ProjectReference Include="..\pozivnik.Infrastructure\pozivnik.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

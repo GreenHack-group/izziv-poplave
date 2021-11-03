@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\pozivnik.Application.Contracts\pozivnik.Application.Contracts.csproj" />
+    <ProjectReference Include="..\pozivnik.Application\pozivnik.Application.csproj" />
+    <ProjectReference Include="..\pozivnik.Core\pozivnik.Core.csproj" />
+  </ItemGroup>
+
+</Project>
