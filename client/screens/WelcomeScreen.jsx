@@ -24,12 +24,6 @@ export const WelcomeScreen = (props) => {
                 onPress={() => handleGoToPage('Settings')}
                 title={'Go to settings'}
             />
-            <Button
-                onPress={() =>
-                    handleGoToPage('Station', { stationId: Math.random() })
-                }
-                title={'Redirect to station screen'}
-            />
         </Container>
     )
 }
