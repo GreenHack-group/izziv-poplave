@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import MapView from 'react-native-maps'
+import MapView, { Marker } from 'react-native-maps'
+import { StationListProps } from '../../shared/types'
 
 const THREE_QUARTERS_OF_SCREEN = 0.75
 
+/* TODO: Style, center, cluster markers, zoom, etc...  */
 /**
  * Map component
  * @param {object} props
@@ -18,7 +20,19 @@ export const Map = (props) => {
         mapType: 'mutedStandard',
     }
 
-    /* TODO: Style, center, markers, zoom, etc...  */
+    const renderMarker = useCallback(
+        (marker) => (
+            <Marker
+                key={marker.stationId}
+                title={marker.measuringPoint}
+                coordinate={{
+                    latitude: marker.latitude,
+                    longitude: marker.longitude,
+                }}
+            />
+        ),
+        []
+    )
 
     return (
         <View style={styles.mapContainer}>
@@ -28,7 +42,11 @@ export const Map = (props) => {
                     width: props.dimensions.width,
                     height: props.dimensions.height * THREE_QUARTERS_OF_SCREEN,
                 }}
-            />
+            >
+                {!props.isLoading &&
+                    props.markers.length > 0 &&
+                    props.markers.map(renderMarker)}
+            </MapView>
         </View>
     )
 }
@@ -43,4 +61,6 @@ const styles = StyleSheet.create({
 
 Map.propTypes = {
     dimensions: PropTypes.object,
+    markers: PropTypes.shape(StationListProps),
+    isLoading: PropTypes.bool,
 }
