@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { createRef, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, View, StyleSheet } from 'react-native'
+import { Dimensions } from 'react-native'
 import { fetchStations } from '../Api/BackendAPI'
 import { Container } from '../components/Container'
 import { Map } from '../components/Map'
 import { BottomDweller } from '../components/BottomDweller'
 import { StationList } from '../components/StationList'
+
+const DWELLER_STATE = {
+    CLOSED: 0,
+    EXTENDED: 1,
+}
 
 /**
  * Screen with a map widget
@@ -15,6 +20,8 @@ import { StationList } from '../components/StationList'
 export const MapScreen = (props) => {
     const [stations, setStations] = useState([])
     const [isLoading, setLoading] = useState(false)
+    const mapRef = useRef(null)
+    const dwellerRef = useRef(null)
 
     useEffect(() => {
         retrieveStationsFromAPI()
@@ -29,20 +36,35 @@ export const MapScreen = (props) => {
     }
 
     const dimensions = Dimensions.get('window')
-    const handleDwellerChanged = (index) => {}
 
     const handleInfoPress = (stationId) =>
         props.navigation.navigate('Station', { stationId })
 
+    const animateToStation = (station) => {
+        const { latitude: lat, longitude: lng } = station
+        if (mapRef.current) {
+            mapRef.current.animateCamera({
+                center: {
+                    latitude: lat,
+                    longitude: lng,
+                },
+                zoom: 15,
+            })
+        }
+        dwellerRef.current.snapToIndex(DWELLER_STATE.CLOSED)
+    }
+
     return (
         <Container>
             <Map
+                mapRef={mapRef}
                 markers={stations}
                 dimensions={dimensions}
                 isLoading={isLoading}
             />
-            <BottomDweller callback={handleDwellerChanged}>
+            <BottomDweller dwellerRef={dwellerRef}>
                 <StationList
+                    onPress={animateToStation}
                     stations={stations}
                     isLoading={isLoading}
                     onInfoPress={handleInfoPress}

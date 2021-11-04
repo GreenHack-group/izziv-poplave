@@ -4,18 +4,16 @@ import PropTypes from 'prop-types'
 const StationDTO = {
     measuringPoint: PropTypes.string,
     river: PropTypes.string,
-    longitude: PropTypes.number.isRequired,
-    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number,
+    latitude: PropTypes.number,
 }
 
 export const StationProps = {
     ...StationDTO,
-    onPress: PropTypes.func,
-    onInfoPress: PropTypes.func,
 }
 
 export const StationListProps = {
-    stations: PropTypes.arrayOf(StationProps),
+    stations: PropTypes.arrayOf(PropTypes.shape(StationProps)),
     isLoading: PropTypes.bool,
     onPress: PropTypes.func,
     onInfoPress: PropTypes.func,

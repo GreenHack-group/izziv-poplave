@@ -1,10 +1,18 @@
 import React, { useCallback } from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import MapView, { Marker } from 'react-native-maps'
-import { StationListProps } from '../../shared/types'
+import MapView from 'react-native-maps'
+// import MapView from 'react-native-map-clustering'
+import { StationProps } from '../../shared/types'
+import { PozivkoMarker } from './Marker'
 
 const THREE_QUARTERS_OF_SCREEN = 0.75
+const INITIAL_REGION_SLOVENIA = {
+    latitude: 46.420329292548146,
+    longitude: 14.999288655817509,
+    longitudeDelta: 3.195434957742693,
+    latitudeDelta: 3.2873723681908373,
+}
 
 /* TODO: Style, center, cluster markers, zoom, etc...  */
 /**
@@ -13,39 +21,39 @@ const THREE_QUARTERS_OF_SCREEN = 0.75
  * @returns
  */
 export const Map = (props) => {
-    // https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md
     const mapOptions = {
         showsBuildings: false,
-        showIndoors: false,
-        mapType: 'mutedStandard',
+        showsIndoors: false,
+        mapType: 'terrain',
+        maxZoomLevel: 18,
+        minZoomLevel: 7,
+        showsCompass: false,
+        showsScale: false,
+        moveOnMarkerPress: false,
+        showsMyLocationButton: false,
+        rotateEnabled: false,
+        toolbarEnabled: false,
+        initialRegion: INITIAL_REGION_SLOVENIA,
+        loadingEnabled: true,
     }
 
     const renderMarker = useCallback(
-        (marker) => (
-            <Marker
-                key={marker.stationId}
-                title={marker.measuringPoint}
-                coordinate={{
-                    latitude: marker.latitude,
-                    longitude: marker.longitude,
-                }}
-            />
-        ),
+        (marker) => <PozivkoMarker key={marker.stationId} marker={marker} />,
         []
     )
 
     return (
         <View style={styles.mapContainer}>
             <MapView
-                {...mapOptions}
+                ref={props.mapRef}
                 style={{
                     width: props.dimensions.width,
-                    height: props.dimensions.height * THREE_QUARTERS_OF_SCREEN,
+                    height: props.dimensions.height,
                 }}
+                initialRegion={INITIAL_REGION_SLOVENIA}
+                {...mapOptions}
             >
-                {!props.isLoading &&
-                    props.markers.length > 0 &&
-                    props.markers.map(renderMarker)}
+                {!props.isLoading && props.markers.map(renderMarker)}
             </MapView>
         </View>
     )
@@ -61,6 +69,7 @@ const styles = StyleSheet.create({
 
 Map.propTypes = {
     dimensions: PropTypes.object,
-    markers: PropTypes.shape(StationListProps),
+    markers: PropTypes.arrayOf(PropTypes.shape(StationProps)),
     isLoading: PropTypes.bool,
+    mapRef: PropTypes.object,
 }
