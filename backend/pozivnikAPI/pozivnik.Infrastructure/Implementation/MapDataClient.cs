@@ -1,5 +1,6 @@
 ﻿using pozivnik.Core.Station;
 using pozivnik.Infrastructure.Interfaces;
+using pozivnik.Persistence.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,47 +15,84 @@ namespace pozivnik.Infrastructure.Implementation
     public class MapDataClient : IMapDataClient
     {
         private static readonly HttpClient client = new HttpClient();
+        private readonly IConnectionXML _connectionXML;
 
-        public async Task<List<HydrologicalStationDto>> getAllStationsXML()
+        public MapDataClient(
+            IConnectionXML connectionXML) 
         {
-            var response = await client.GetAsync("http://www.arso.gov.si/xml/vode/hidro_podatki_zadnji.xml");
-            if (response.IsSuccessStatusCode)
-            {
-                string responseBody = await response.Content.ReadAsStringAsync();
-
-                XmlDocument xml = new XmlDocument();
-                xml.LoadXml(responseBody);
-
-                XmlNodeList xnList = xml.SelectNodes("/arsopodatki/postaja");
-
-                List<HydrologicalStationDto> hydrologicalStations = new List<HydrologicalStationDto>();
-
-                foreach (XmlNode xn in xnList)
-                {
-                    HydrologicalStationDto temp = new HydrologicalStationDto {
-                        StationId = int.Parse(xn.Attributes["sifra"].Value),
-                        River = xn["reka"].InnerText,
-                        MeasuringPoint = xn["merilno_mesto"].InnerText,
-                        Longitude = float.Parse(xn.Attributes["ge_dolzina"].Value),
-                        Latitude = float.Parse(xn.Attributes["ge_sirina"].Value)
-                    };
-                    hydrologicalStations.Add(temp);
-                    
-                }
-
-                return hydrologicalStations;
-            }
-            else
-            {
-                //TODO
-                return null;
-            }
+            _connectionXML = connectionXML;
         }
 
-        public async Task<List<HydrologicalStationDto>> FetchAllStationsXML() 
+        public async Task<List<HydrologicalStationDto>> FetchAllStationsXML()
         {
-            var response = await getAllStationsXML();
-            return response; 
+            var xml = await _connectionXML.getXML();
+            XmlNodeList xnList = xml.SelectNodes("/arsopodatki/postaja");
+
+            List<HydrologicalStationDto> hydrologicalStations = new List<HydrologicalStationDto>();
+
+            foreach (XmlNode xn in xnList)
+            {
+                HydrologicalStationDto temp = new HydrologicalStationDto
+                {
+                    StationId = int.Parse(xn.Attributes["sifra"].Value),
+                    River = xn["reka"].InnerText,
+                    MeasuringPoint = xn["merilno_mesto"].InnerText,
+                    Longitude = float.Parse(xn.Attributes["ge_dolzina"].Value),
+                    Latitude = float.Parse(xn.Attributes["ge_sirina"].Value)
+                };
+                hydrologicalStations.Add(temp);
+            }
+            return hydrologicalStations;
+
+        }
+        public async Task<HydrologicalStationDataDto> FetchOneStationDataXML(string stationId) 
+        {
+            var xml = await _connectionXML.getXML();
+            XmlNodeList xnList = xml.SelectNodes("/arsopodatki/postaja");
+
+            foreach (XmlNode xn in xnList)
+            {
+                if (xn.Attributes["sifra"].Value == stationId)
+                {
+                    HydrologicalStationDataDto hy = new HydrologicalStationDataDto
+                    {
+                        River = (xn["reka"] == null || xn["reka"].InnerText == "") 
+                                ? null : xn["reka"].InnerText,
+                        MeasuringPoint = (xn["merilno_mesto"] == null || xn["merilno_mesto"].InnerText == "")
+                                ? null : xn["merilno_mesto"].InnerText,
+                        DateAndTime = (xn["datum"] == null || xn["datum"].InnerText == "")
+                                        ? null : DateTime.Parse(xn["datum"].InnerText),
+                        WaterLevel = (xn["vodostaj"] == null || xn["vodostaj"].InnerText == "")
+                                        ? null : int.Parse(xn["vodostaj"].InnerText),
+                        WaterLevelGroup = (xn["vodostaj_znacilni"] == null || xn["vodostaj_znacilni"].InnerText == "")
+                                            ? null : xn["vodostaj_znacilni"].InnerText,
+                        WaterFlow = (xn["pretok"] == null || xn["pretok"].InnerText == "")
+                                      ? null : float.Parse(xn["pretok"].InnerText),
+                        WaterFlowGroup = (xn["pretok_znacilni"] == null || xn["pretok_znacilni"].InnerText == "")
+                                          ? null : xn["pretok_znacilni"].InnerText,
+                        WaterTemperature = (xn["temp_vode"] == null || xn["temp_vode"].InnerText == "")
+                                            ? null : float.Parse(xn["temp_vode"].InnerText),
+                        FirstHWLevel = (xn["prvi_vv_vodostaj"] == null || xn["prvi_vv_vodostaj"].InnerText == "")
+                                        ? null : float.Parse(xn["prvi_vv_vodostaj"].InnerText),
+                        SecondHWLevel = (xn["drugi_vv_vodostaj"] == null || xn["drugi_vv_vodostaj"].InnerText == "")
+                                         ? null : float.Parse(xn["drugi_vv_vodostaj"].InnerText),
+                        ThirdHWLevel = (xn["tretji_vv_vodostaj"] == null || xn["tretji_vv_vodostaj"].InnerText == "")
+                                        ? null : float.Parse(xn["tretji_vv_vodostaj"].InnerText),
+                        FirstHWFlow = (xn["prvi_vv_pretok"] == null || xn["prvi_vv_pretok"].InnerText == "")
+                                       ? null : float.Parse(xn["prvi_vv_pretok"].InnerText),
+                        SecondHWFlow = (xn["drugi_vv_pretok"] == null || xn["drugi_vv_pretok"].InnerText == "")
+                                        ? null : float.Parse(xn["drugi_vv_pretok"].InnerText),
+                        ThirdHWFlow = (xn["tretji_vv_pretok"] == null || xn["tretji_vv_pretok"].InnerText == "")
+                                       ? null : float.Parse(xn["tretji_vv_pretok"].InnerText),
+                        WaveHeight = (xn["znacilna_visina_valov"] == null || xn["znacilna_visina_valov"].InnerText == "")
+                                        ? null : float.Parse(xn["znacilna_visina_valov"].InnerText)
+                    };
+                    return hy;
+                }
+            }
+
+
+            return null;
         }
     }
 }

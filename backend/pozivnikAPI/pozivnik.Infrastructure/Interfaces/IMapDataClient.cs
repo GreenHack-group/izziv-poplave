@@ -11,6 +11,7 @@ namespace pozivnik.Infrastructure.Interfaces
     //e.g. Fetch + All + Stations (+ XML)
     public interface IMapDataClient
     {
+        public Task<HydrologicalStationDataDto> FetchOneStationDataXML(string stationId);
         public Task<List<HydrologicalStationDto>> FetchAllStationsXML();
     }
 }

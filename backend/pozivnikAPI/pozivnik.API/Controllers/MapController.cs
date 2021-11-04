@@ -20,10 +20,17 @@ namespace pozivnik.API.Controllers
 
         [HttpGet]
         [Route("stationMarkers")]
-        public async Task<List<HydrologicalStationDto>> FetchAllStationMarkers() {
-
+        public async Task<List<HydrologicalStationDto>> FetchAllStationMarkers() 
+        {
             var response = await _mapService.GetStationList();
 
+            return response;
+        }
+        [HttpPost]
+        [Route("station")]
+        public async Task<HydrologicalStationDataDto> FetchStation(string? stationId)
+        {
+            var response = await _mapService.GetStationData(stationId);
             return response;
         }
         

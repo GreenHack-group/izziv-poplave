@@ -10,5 +10,7 @@ namespace pozivnik.Application.Contracts
     public interface IMapService
     {
         public Task<List<HydrologicalStationDto>> GetStationList();
+
+        public Task<HydrologicalStationDataDto> GetStationData(string stationId);
     }
 }
