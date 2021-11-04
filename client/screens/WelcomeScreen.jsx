@@ -10,7 +10,7 @@ import { Container } from '../components/Container'
  * @returns
  */
 export const WelcomeScreen = (props) => {
-    handleGoToPage = (page, options = {}) =>
+    const handleGoToPage = (page, options = {}) =>
         props.navigation.navigate(page, options)
 
     return (
@@ -20,6 +20,10 @@ export const WelcomeScreen = (props) => {
                 redirects
             </Text>
             <Button onPress={() => handleGoToPage('Map')} title={'Go to map'} />
+            <Button
+                onPress={() => handleGoToPage('Settings')}
+                title={'Go to settings'}
+            />
             <Button
                 onPress={() =>
                     handleGoToPage('Station', { stationId: Math.random() })

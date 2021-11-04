@@ -1,29 +1,34 @@
 import React from 'react'
-import { View, StyleSheet, Text, Dimensions } from 'react-native'
+import PropTypes from 'prop-types'
+import { Pressable, StyleSheet, Text, Dimensions, View } from 'react-native'
 import { StationProps } from '../../shared/types'
 import { MaterialIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import theme from '../../shared/theme'
 
-export const ListWidget = (props) => (
-    <View key={props.title} style={styles.itemWrapper} onPress={props.onPress}>
+export const ListItem = (props) => (
+    <Pressable
+        key={props.title}
+        style={styles.itemWrapper}
+        onPress={() => props.onPress(props.station)}
+    >
         <View style={styles.leftWrapper}>
             <MaterialIcons
                 name="water-damage"
                 size={48}
                 color={theme.COLORS.primary}
             />
-            <Text style={styles.title}>{props.measuringPoint}</Text>
+            <Text style={styles.title}>{props.station.measuringPoint}</Text>
         </View>
         <View style={styles.rightWrapper}>
             <AntDesign
-                onPress={props.onInfoPress}
+                onPress={() => props.onInfoPress(props.station.stationId)}
                 name="infocirlce"
                 size={36}
                 color={theme.COLORS.primary}
             />
         </View>
-    </View>
+    </Pressable>
 )
 
 const styles = StyleSheet.create({
@@ -54,4 +59,8 @@ const styles = StyleSheet.create({
     },
 })
 
-ListWidget.propTypes = StationProps
+ListItem.propTypes = {
+    station: PropTypes.shape(StationProps),
+    onPress: PropTypes.func,
+    onInfoPress: PropTypes.func,
+}

@@ -7,6 +7,7 @@ import theme from './shared/theme'
 import { WelcomeScreen } from './screens/WelcomeScreen'
 import { MapScreen } from './screens/MapScreen'
 import { StationScreen } from './screens/StationScreen'
+import { SettingsScreen } from './screens/SettingsScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +24,7 @@ export default function App() {
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Map" component={MapScreen} />
                 <Stack.Screen name="Station" component={StationScreen} />
+                <Stack.Screen name="Settings" component={SettingsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

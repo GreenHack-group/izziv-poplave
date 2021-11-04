@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { View, Text } from 'react-native'
 import { StationListProps } from '../../shared/types'
-import { ListWidget } from './ListWidget'
+import { ListItem } from './ListItem'
 
 export const StationList = (props) => {
     if (props.isLoading) {
@@ -12,8 +12,17 @@ export const StationList = (props) => {
         )
     }
 
+    console.log(props.onPress)
+
     const renderStationItem = useCallback(
-        (station) => <ListWidget key={station.stationId} {...station} />,
+        (station) => (
+            <ListItem
+                key={station.stationId}
+                station={station}
+                onPress={props.onPress}
+                onInfoPress={props.onInfoPress}
+            />
+        ),
         []
     )
     return <>{props.stations.map(renderStationItem)}</>
