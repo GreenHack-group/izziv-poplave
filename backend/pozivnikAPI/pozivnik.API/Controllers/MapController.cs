@@ -26,7 +26,7 @@ namespace pozivnik.API.Controllers
 
             return response;
         }
-        [HttpPost]
+        [HttpGet]
         [Route("station")]
         public async Task<HydrologicalStationDataDto> FetchStation(string? stationId)
         {
