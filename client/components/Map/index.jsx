@@ -38,7 +38,13 @@ export const Map = (props) => {
     }
 
     const renderMarker = useCallback(
-        (marker) => <PozivkoMarker key={marker.stationId} marker={marker} />,
+        (marker) => (
+            <PozivkoMarker
+                key={marker.stationId}
+                marker={marker}
+                onMarkerPressed={props.onMarkerPressed}
+            />
+        ),
         []
     )
 
@@ -72,4 +78,5 @@ Map.propTypes = {
     markers: PropTypes.arrayOf(PropTypes.shape(StationProps)),
     isLoading: PropTypes.bool,
     mapRef: PropTypes.object,
+    onMarkerPressed: PropTypes.func,
 }
