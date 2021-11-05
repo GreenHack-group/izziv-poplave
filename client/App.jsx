@@ -1,5 +1,4 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import theme from './shared/theme'
@@ -10,6 +9,7 @@ import { WelcomeScreen } from './screens/WelcomeScreen'
 import { MapScreen } from './screens/MapScreen'
 import { StationScreen } from './screens/StationScreen'
 import { SettingsScreen } from './screens/SettingsScreen'
+import OnStartAnimation from './components/Animations/OnStartAnimation'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,11 +24,13 @@ export default function App() {
         Roboto_500Medium,
     })
 
-    if (!fontsLoaded) {
+    const [startingAnimation, setStartingAnimation] = useState(true)
+
+    if (startingAnimation) {
         return (
-            <View>
-                <Text>Loading...</Text>
-            </View>
+            <OnStartAnimation
+                onAnimationFinished={() => setStartingAnimation(false)}
+            />
         )
     }
 
