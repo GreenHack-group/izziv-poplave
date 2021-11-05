@@ -12,8 +12,6 @@ export const StationList = (props) => {
         )
     }
 
-    console.log(props.onPress)
-
     const renderStationItem = useCallback(
         (station) => (
             <ListItem

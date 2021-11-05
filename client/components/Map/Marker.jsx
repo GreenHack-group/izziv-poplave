@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import { Marker } from 'react-native-maps'
 import { StationProps } from '../../shared/types'
 import { MaterialIcons } from '@expo/vector-icons'
 import theme from '../../shared/theme'
 
-export const PozivkoMarker = memo(({ marker }) => {
+export const PozivkoMarker = memo(({ marker, onMarkerPressed }) => {
     return (
         <Marker
             key={marker.stationId}
@@ -14,6 +15,7 @@ export const PozivkoMarker = memo(({ marker }) => {
                 latitude: marker.latitude,
                 longitude: marker.longitude,
             }}
+            onPress={() => onMarkerPressed(marker)}
         >
             <MaterialIcons
                 name="water-damage"
@@ -24,4 +26,7 @@ export const PozivkoMarker = memo(({ marker }) => {
     )
 })
 
-PozivkoMarker.propTypes = StationProps
+PozivkoMarker.propTypes = {
+    marker: PropTypes.shape(StationProps),
+    onMarkerPressed: PropTypes.func,
+}

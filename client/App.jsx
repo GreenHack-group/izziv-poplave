@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import theme from './shared/theme'
+import { useFonts, Roboto_500Medium } from '@expo-google-fonts/roboto'
 
 // Screens
 import { WelcomeScreen } from './screens/WelcomeScreen'
 import { MapScreen } from './screens/MapScreen'
 import { StationScreen } from './screens/StationScreen'
 import { SettingsScreen } from './screens/SettingsScreen'
+import OnStartAnimation from './components/Animations/OnStartAnimation'
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +20,20 @@ const Stack = createNativeStackNavigator()
  * on app start
  */
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        Roboto_500Medium,
+    })
+
+    const [startingAnimation, setStartingAnimation] = useState(true)
+
+    if (startingAnimation) {
+        return (
+            <OnStartAnimation
+                onAnimationFinished={() => setStartingAnimation(false)}
+            />
+        )
+    }
+
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={HeaderOptions}>
@@ -36,6 +52,7 @@ const HeaderOptions = {
     },
     headerTintColor: theme.COLORS.white,
     headerTitleStyle: {
-        fontWeight: 'bold',
+        fontWeight: theme.FONTS.BOLD,
+        fontFamily: 'Roboto_500Medium',
     },
 }

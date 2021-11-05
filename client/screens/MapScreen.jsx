@@ -5,12 +5,7 @@ import { fetchStations } from '../Api/BackendAPI'
 import { Container } from '../components/Container'
 import { Map } from '../components/Map'
 import { BottomDweller } from '../components/BottomDweller'
-import { StationList } from '../components/StationList'
-
-const DWELLER_STATE = {
-    CLOSED: 0,
-    EXTENDED: 1,
-}
+import { ListItem } from '../components/StationList/ListItem'
 
 /**
  * Screen with a map widget
@@ -20,11 +15,13 @@ const DWELLER_STATE = {
 export const MapScreen = (props) => {
     const [stations, setStations] = useState([])
     const [isLoading, setLoading] = useState(false)
+    const [selectedStation, setSelectedStation] = useState(null)
     const mapRef = useRef(null)
     const dwellerRef = useRef(null)
 
     useEffect(() => {
         retrieveStationsFromAPI()
+        if (dwellerRef.current) dwellerRef.current.close()
     }, [])
 
     const retrieveStationsFromAPI = async () => {
@@ -51,7 +48,13 @@ export const MapScreen = (props) => {
                 zoom: 15,
             })
         }
-        dwellerRef.current.snapToIndex(DWELLER_STATE.CLOSED)
+    }
+
+    const handleOnMarkerPress = (station) => {
+        console.log(station)
+        setSelectedStation(station)
+        animateToStation(station)
+        if (dwellerRef.current) dwellerRef.current.expand()
     }
 
     return (
@@ -61,15 +64,17 @@ export const MapScreen = (props) => {
                 markers={stations}
                 dimensions={dimensions}
                 isLoading={isLoading}
+                onMarkerPressed={handleOnMarkerPress}
             />
-            <BottomDweller dwellerRef={dwellerRef}>
-                <StationList
-                    onPress={animateToStation}
-                    stations={stations}
-                    isLoading={isLoading}
-                    onInfoPress={handleInfoPress}
-                />
-            </BottomDweller>
+            {selectedStation !== null && (
+                <BottomDweller dwellerRef={dwellerRef}>
+                    <ListItem
+                        station={selectedStation}
+                        onInfoPress={handleInfoPress}
+                        onPress={animateToStation}
+                    />
+                </BottomDweller>
+            )}
         </Container>
     )
 }
