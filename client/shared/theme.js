@@ -1,10 +1,13 @@
 module.exports = {
     COLORS: {
-        primary: '#0077B6',
-        secondary: '#00B4D8',
+        primary: '#21bdff',
+        secondary: '#5433ff',
+        tertionary: '#a6ffcc',
         white: '#fff',
         black: '#000',
-        softBlue: '#e3f2fd',
+        lightGray: '#e8f2fc',
+        softBlue: '#c2d1e5',
+        darkBlue: '#0d2438',
     },
     LAYOUT: {
         paddingSmall: 5,

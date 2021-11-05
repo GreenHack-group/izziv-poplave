@@ -1,7 +1,9 @@
 import React from 'react'
+import { View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import theme from './shared/theme'
+import { useFonts, Roboto_500Medium } from '@expo-google-fonts/roboto'
 
 // Screens
 import { WelcomeScreen } from './screens/WelcomeScreen'
@@ -18,6 +20,18 @@ const Stack = createNativeStackNavigator()
  * on app start
  */
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        Roboto_500Medium,
+    })
+
+    if (!fontsLoaded) {
+        return (
+            <View>
+                <Text>Loading...</Text>
+            </View>
+        )
+    }
+
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={HeaderOptions}>
@@ -36,6 +50,7 @@ const HeaderOptions = {
     },
     headerTintColor: theme.COLORS.white,
     headerTitleStyle: {
-        fontWeight: 'bold',
+        fontWeight: theme.FONTS.BOLD,
+        fontFamily: 'Roboto_500Medium',
     },
 }

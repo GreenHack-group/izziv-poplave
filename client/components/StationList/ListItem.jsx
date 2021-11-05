@@ -5,6 +5,7 @@ import { StationProps } from '../../shared/types'
 import { MaterialIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import theme from '../../shared/theme'
+import { BoldText } from '../PozivkoText'
 
 export const ListItem = (props) => (
     <Pressable
@@ -18,7 +19,9 @@ export const ListItem = (props) => (
                 size={48}
                 color={theme.COLORS.primary}
             />
-            <Text style={styles.title}>{props.station.measuringPoint}</Text>
+            <BoldText style={styles.title}>
+                {props.station.measuringPoint}
+            </BoldText>
         </View>
         <View style={styles.rightWrapper}>
             <AntDesign
