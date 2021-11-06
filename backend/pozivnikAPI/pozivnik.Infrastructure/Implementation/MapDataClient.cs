@@ -1,4 +1,5 @@
-﻿using pozivnik.Core.Station;
+﻿using MySql.Data.MySqlClient;
+using pozivnik.Core.Station;
 using pozivnik.Infrastructure.Interfaces;
 using pozivnik.Persistence.Interfaces;
 using System;
@@ -16,11 +17,40 @@ namespace pozivnik.Infrastructure.Implementation
     {
         private static readonly HttpClient client = new HttpClient();
         private readonly IConnectionXML _connectionXML;
+        private readonly IConnectionDB _connectionDB;
 
         public MapDataClient(
-            IConnectionXML connectionXML) 
+            IConnectionXML connectionXML,
+            IConnectionDB connectiobDB) 
         {
             _connectionXML = connectionXML;
+            _connectionDB = connectiobDB;
+        }
+
+        public List<MeasurementDto> FetchGraphData(string stationId)
+        {
+
+            var conn = _connectionDB.getDB(stationId);
+
+            string sql = "SELECT m.datum_cas, m.vodostaj, m.pretok, m.temperatura_vode "+
+                        "FROM meritev m "+
+                        "WHERE m.sifra_postaja = " + stationId ;
+            using var cmd = new MySqlCommand(sql, conn);
+
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            List<MeasurementDto> measurementList = new List<MeasurementDto>();
+            while (rdr.Read())
+            {
+                MeasurementDto measurement = new MeasurementDto {
+                    DateOfMeasurement = DateTime.Parse(rdr.GetString(0)),
+                    waterLevel = float.Parse(rdr.GetString(1)),
+                    waterFlow = float.Parse(rdr.GetString(2)),
+                    waterTemperature = float.Parse(rdr.GetString(3)),
+                };
+
+                measurementList.Add(measurement);
+            }
+            return measurementList;
         }
 
         public async Task<List<HydrologicalStationDto>> FetchAllStationsXML()

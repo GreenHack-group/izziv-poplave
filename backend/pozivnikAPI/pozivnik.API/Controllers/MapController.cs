@@ -33,6 +33,14 @@ namespace pozivnik.API.Controllers
             var response = await _mapService.GetStationData(stationId);
             return response;
         }
+
+        [HttpGet]
+        [Route("graph")]
+        public List<MeasurementDto> FetchGraphData(string stationId)
+        {
+            var response = _mapService.GetGraphData(stationId);
+            return response;
+        }
         
 
     }

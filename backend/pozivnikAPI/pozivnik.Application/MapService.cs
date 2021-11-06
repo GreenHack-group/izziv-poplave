@@ -30,5 +30,11 @@ namespace pozivnik.Application
 
             return response;
         }
+        public List<MeasurementDto> GetGraphData(string stationId) 
+        {
+            var response = _mapDataClient.FetchGraphData(stationId);
+
+            return response; 
+        }
     }
 }

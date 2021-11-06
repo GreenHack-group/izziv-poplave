@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IMapService, MapService>();
 builder.Services.AddSingleton<IMapDataClient, MapDataClient>();
 builder.Services.AddSingleton<IConnectionXML, ConnectionXML>();
+builder.Services.AddSingleton<IConnectionDB,ConnectionDB>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

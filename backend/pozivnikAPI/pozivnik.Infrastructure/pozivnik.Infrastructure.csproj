@@ -15,6 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.27" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\pozivnik.Core\pozivnik.Core.csproj" />
     <ProjectReference Include="..\pozivnik.Persistence\pozivnik.Persistence.csproj" />
   </ItemGroup>
