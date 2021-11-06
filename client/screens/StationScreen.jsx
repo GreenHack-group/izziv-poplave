@@ -11,49 +11,71 @@ import { StationProfileImage } from "../components/StationProperties/StationProf
  * @param {object} props
  * @returns
  */
-export const StationScreen = (props) => {
     // Will be used to fetch specific station info
     // TODO podatki o postajo in background color
 
-    //             <Text style={styles.title}>Station properties screen</Text>
-    //             <Text style={styles.text}>Properties for station with id: {stationId}</Text>
-    /*
-        <Text> Testing small widget left</Text>
-        <Text> Testing small widget right</Text>
+export const Separator = () => (
+  <View style={styles.separator} />
+);
 
-        <Text> Testing large widget 2</Text>
-
-                    <Text> Testing small widget left 2</Text>
-                    <Text> Testing small widget right 2</Text>
-     */
-
-
-
+/**
+ * Screen to display station info and more
+ * @param {object} props
+ * @returns
+ */
+export const StationScreen = (props) => {
+    // Will be used to fetch specific station info
     const { stationId } = props.route.params
     return (
         <StationPropertiesContainer>
-
             <StationProfileImage>
-
             </StationProfileImage>
+                <View style={{ paddingHorizontal: theme.LAYOUT.paddingLarge, flex: 1 }}>
 
-            <View style={{ paddingHorizontal: theme.LAYOUT.paddingLarge, flex: 1 }}>
+                    <StationPropertiesWidgetSmall>
 
-                <StationPropertiesWidgetSmall>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <View >
+                                <Text>Leva</Text>
+                            </View>
+                                <Separator/>
+                            <View >
+                                <Text>Desna</Text>
+                            </View>
+                        </View>
 
-                </StationPropertiesWidgetSmall>
+                    </StationPropertiesWidgetSmall>
 
-                <StationPropertiesWidgetLarge>
-                </StationPropertiesWidgetLarge>
+                    <StationPropertiesWidgetLarge>
 
-                <StationPropertiesWidgetSmall>
+                        <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <View >
+                                <Text>Leva</Text>
+                            </View>
+                            <View >
+                                <Text>Leva</Text>
+                            </View>
+                        </View>
 
-                </StationPropertiesWidgetSmall>
+                    </StationPropertiesWidgetLarge>
 
-            </View>
+                    <StationPropertiesWidgetSmall>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <View >
+                                <Text>Leva Spodaj</Text>
+                            </View>
+                                <Separator/>
+                            <View >
+                                <Text>Desna Spodaj</Text>
+                            </View>
+                        </View>
+                    </StationPropertiesWidgetSmall>
+
+                </View>
         </StationPropertiesContainer>
     )
 }
+
 
 const styles = StyleSheet.create({
     title: {
@@ -64,7 +86,15 @@ const styles = StyleSheet.create({
     text: {
         fontSize: theme.FONTS.SIZE_MD,
         padding: theme.LAYOUT.paddingSmall,
-    }
+    },
+    separator: {
+        //marginVertical: 8,
+        //borderBottomColor: theme.COLORS.black,
+        //borderBottomWidth: 1,
+        height: '100%',
+        width: 1,
+        backgroundColor: '#909090',
+  },
 })
 
 StationScreen.propTypes = {

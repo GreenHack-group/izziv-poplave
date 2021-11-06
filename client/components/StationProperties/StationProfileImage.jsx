@@ -14,7 +14,6 @@ export const StationProfileImage = () => {
   );
 }
 
-  //source={'../assets/img.png'}
 
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions } from 'react-native'
 import { fetchStations } from '../Api/BackendAPI'
@@ -36,7 +36,7 @@ export const MapScreen = (props) => {
 
     const handleInfoPress = (stationId) => {
         props.navigation.navigate('Station', { stationId })
-        console.log("clicked on station ifo")
+        console.log("clicked on station info")
     }
 
     const animateToStation = (station) => {

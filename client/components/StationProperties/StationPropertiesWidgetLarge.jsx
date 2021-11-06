@@ -12,15 +12,15 @@ import theme from '../../shared/theme'
  * @returns
  */
 export const StationPropertiesWidgetLarge = (props) => {
-    return <View style={styles.container}> {props.children} </View>
+    return <View style={styles.container}>{props.children}</View>
 }
 
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
-        marginBottom: 10,
-        marginVertical: 10,
+        marginBottom: 5,
+        marginVertical: 5,
         color: theme.COLORS.black,
         flex: 0.5,
         borderRadius: 20,
