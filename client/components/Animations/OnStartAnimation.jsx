@@ -18,6 +18,8 @@ const OnStartAnimation = (props) => {
 const styles = StyleSheet.create({
     animationContainer: {
         flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
     },
 })
 

@@ -37,7 +37,13 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={HeaderOptions}>
-                <Stack.Screen name="Welcome" component={WelcomeScreen} />
+                <Stack.Screen
+                    name="Welcome"
+                    component={WelcomeScreen}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
                 <Stack.Screen name="Map" component={MapScreen} />
                 <Stack.Screen name="Station" component={StationScreen} />
                 <Stack.Screen name="Settings" component={SettingsScreen} />

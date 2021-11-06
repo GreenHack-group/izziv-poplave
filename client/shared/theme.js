@@ -1,7 +1,7 @@
 module.exports = {
     COLORS: {
-        primary: '#21bdff',
-        secondary: '#5433ff',
+        primary: '#5433ff',
+        secondary: '#21bdff',
         tertionary: '#a6ffcc',
         white: '#fff',
         black: '#000',
@@ -13,13 +13,16 @@ module.exports = {
         paddingSmall: 5,
         paddingMedium: 10,
         paddingLarge: 20,
+        rounded: 40, // use for rounding things as views or buttons
     },
     FONTS: {
-        SIZE_LG: 20,
+        SIZE_XL: 24,
+        SIZE_LG: 21,
         SIZE_BASE: 18,
         SIZE_MD: 16,
         SIZE_SM: 14,
         BOLD: '700',
         NORMAL: '400',
+        ROBOTO: 'Roboto_500Medium',
     },
 }
