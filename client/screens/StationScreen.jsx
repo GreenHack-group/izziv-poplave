@@ -26,7 +26,7 @@ export const Separator = () => <View style={styles.separator} />
 export const StationScreen = (props) => {
     // Will be used to fetch specific station info
     const { stationId } = props.route.params
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(true)
     const [stationData, setStationData] = useState(null)
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export const StationScreen = (props) => {
         setStationData(data)
     }
 
-    if (isLoading) {
+    if (isLoading || stationData === null) {
         return <OnStartAnimation />
     }
 
