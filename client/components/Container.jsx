@@ -18,7 +18,7 @@ export const Container = (props) => {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: theme.LAYOUT.paddingLarge,
-        backgroundColor: theme.COLORS.white,
+        backgroundColor: theme.COLORS.background,
         color: theme.COLORS.black,
         flex: 1,
     },

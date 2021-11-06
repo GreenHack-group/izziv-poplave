@@ -8,6 +8,7 @@ module.exports = {
         lightGray: '#e8f2fc',
         softBlue: '#c2d1e5',
         darkBlue: '#0d2438',
+        background: '#E9F1FC',
     },
     LAYOUT: {
         paddingSmall: 5,

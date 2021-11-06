@@ -3,6 +3,9 @@ import { View, Text } from 'react-native'
 import { StationListProps } from '../../shared/types'
 import { ListItem } from './ListItem'
 
+/**
+ * @deprecated DO NOT USE THIS FOR STATION LIST
+ */
 export const StationList = (props) => {
     if (props.isLoading) {
         return (
