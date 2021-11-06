@@ -8,7 +8,8 @@ import { StationPropertiesWidgetLarge } from '../components/StationProperties/St
 import { StationProfileImage } from '../components/StationProperties/StationProfileImage'
 import { fetchStationById } from '../Api/BackendAPI'
 import OnStartAnimation from '../components/Animations/OnStartAnimation'
-import {StationPropertiesWidgetGraf} from "../components/StationProperties/StationPropertiesWidgetGraf";
+import { StationPropertiesWidgetGraf } from '../components/StationProperties/StationPropertiesWidgetGraf'
+import VodostajIcon from '../components/Icons/VodostajIcon'
 /**
  * Screen to display station info and more
  * @param {object} props
@@ -48,10 +49,18 @@ export const StationScreen = (props) => {
     return (
         <StationPropertiesContainer>
             <View>
-                <StationProfileImage/>
-                    <View style={{position: 'absolute', left: theme.LAYOUT.paddingMedium, bottom: theme.LAYOUT.paddingMedium}}>
-                        <Text style={styles.title}>{stationData.measuringPoint}</Text>
-                    </View>
+                <StationProfileImage />
+                <View
+                    style={{
+                        position: 'absolute',
+                        left: theme.LAYOUT.paddingMedium,
+                        bottom: theme.LAYOUT.paddingMedium,
+                    }}
+                >
+                    <Text style={styles.title}>
+                        {stationData.measuringPoint}
+                    </Text>
+                </View>
             </View>
 
             <Text style={styles.text}>{stationData.river}</Text>
@@ -71,6 +80,7 @@ export const StationScreen = (props) => {
                         }}
                     >
                         <View>
+                            <VodostajIcon />
                             <Text>{stationData.waterLevel} m</Text>
                         </View>
                         <Separator />
@@ -97,7 +107,9 @@ export const StationScreen = (props) => {
                 </StationPropertiesWidgetLarge>
 
                 <StationPropertiesWidgetGraf>
-                    <Text style={{justifyContent: 'right'}}>GRAFI TO BE</Text>
+                    <Text style={{ justifyContent: 'flex-end' }}>
+                        GRAFI TO BE
+                    </Text>
                 </StationPropertiesWidgetGraf>
             </View>
         </StationPropertiesContainer>
