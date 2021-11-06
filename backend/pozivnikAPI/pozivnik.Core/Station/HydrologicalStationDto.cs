@@ -12,8 +12,8 @@ namespace pozivnik.Core.Station
         public string River { get; set; }
         public string MeasuringPoint { get; set; } 
         public float Longitude { get; set; }
-
         public float Latitude { get; set; }
+        public int DangerLevel { get; set; }
 
     }
 }

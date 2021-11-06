@@ -52,6 +52,45 @@ namespace pozivnik.Infrastructure.Implementation
             }
             return measurementList;
         }
+        public int calculateDangerLevel(XmlNode xn) {
+            if ((xn["vodostaj_znacilni"] == null || xn["vodostaj_znacilni"].InnerText == "")
+                && (xn["pretok_znacilni"] == null || xn["pretok_znacilni"].InnerText == ""))
+            {
+                return 4;
+            }
+            else if (xn["vodostaj_znacilni"] == null || xn["vodostaj_znacilni"].InnerText == "")
+            {
+                switch (xn["pretok_znacilni"].InnerText)
+                {
+                    case "prvi visokovodni pretok":
+                        return 1;
+                    case "drugi visokovodni pretok":
+                        return 2;
+                    case "tretji visokovodni pretok":
+                        return 3;
+                    default:
+                        return 0;
+                }
+            }
+            else if (xn["pretok_znacilni"] == null || xn["pretok_znacilni"].InnerText == "")
+            {
+                switch (xn["vodostaj_znacilni"].InnerText)
+                {
+                    case "prvi visokovodni vodostaj":
+                        return 1;
+                    case "drugi visokovodni vodostaj":
+                        return 2;
+                    case "tretji visokovodni vodostaj":
+                        return 3;
+                    default:
+                        return 0;
+                }
+            }
+            else 
+            {
+                return 4;
+            }
+        }
 
         public async Task<List<HydrologicalStationDto>> FetchAllStationsXML()
         {
@@ -68,7 +107,8 @@ namespace pozivnik.Infrastructure.Implementation
                     River = xn["reka"].InnerText,
                     MeasuringPoint = xn["merilno_mesto"].InnerText,
                     Longitude = float.Parse(xn.Attributes["ge_dolzina"].Value),
-                    Latitude = float.Parse(xn.Attributes["ge_sirina"].Value)
+                    Latitude = float.Parse(xn.Attributes["ge_sirina"].Value),
+                    DangerLevel = calculateDangerLevel(xn)
                 };
                 hydrologicalStations.Add(temp);
             }
