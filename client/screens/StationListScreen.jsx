@@ -17,11 +17,14 @@ export const StationListScreen = (props) => {
             return setFilteredStations(stations)
         }
 
-        const filtered = stations.filter(
-            (station) =>
-                station.measuringPoint.includes(search) ||
-                station.river.includes(search)
-        )
+        const filtered = stations.filter((station) => {
+            const measuringPoint = station.measuringPoint.toLowerCase()
+            const river = station.river.toLowerCase()
+            const query = search.toLowerCase()
+
+            return measuringPoint.includes(query) || river.includes(query)
+        })
+
         setFilteredStations(filtered)
     }, [search])
 
