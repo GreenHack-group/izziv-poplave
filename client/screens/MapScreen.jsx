@@ -1,12 +1,7 @@
-import React, {
-    createRef,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-} from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions } from 'react-native'
+import { fetchStations } from '../Api/BackendAPI'
 import { Container } from '../components/Container'
 import { Map } from '../components/Map'
 import { BottomDweller } from '../components/BottomDweller'
@@ -23,13 +18,16 @@ export const MapScreen = (props) => {
     const [selectedStation, setSelectedStation] = useState(null)
     const mapRef = useRef(null)
     const dwellerRef = useRef(null)
-    const dimensions = Dimensions.get('window')
+
     useEffect(() => {
         if (dwellerRef.current) dwellerRef.current.close()
     }, [])
 
-    const handleInfoPress = (stationId) =>
+    const dimensions = Dimensions.get('window')
+
+    const handleInfoPress = (stationId) => {
         props.navigation.navigate('Station', { stationId })
+    }
 
     const animateToStation = (station) => {
         const { latitude: lat, longitude: lng } = station
@@ -45,7 +43,6 @@ export const MapScreen = (props) => {
     }
 
     const handleOnMarkerPress = (station) => {
-        console.log(station)
         setSelectedStation(station)
         animateToStation(station)
         if (dwellerRef.current) dwellerRef.current.expand()

@@ -5,8 +5,8 @@ import MapView from 'react-native-maps'
 // import MapView from 'react-native-map-clustering'
 import { StationProps } from '../../shared/types'
 import { PozivkoMarker } from './Marker'
+import mapStyle from '../../assets/mapStyles.json'
 
-const THREE_QUARTERS_OF_SCREEN = 0.75
 const INITIAL_REGION_SLOVENIA = {
     latitude: 46.420329292548146,
     longitude: 14.999288655817509,
@@ -24,7 +24,6 @@ export const Map = (props) => {
     const mapOptions = {
         showsBuildings: false,
         showsIndoors: false,
-        mapType: 'terrain',
         maxZoomLevel: 18,
         minZoomLevel: 7,
         showsCompass: false,
@@ -52,6 +51,7 @@ export const Map = (props) => {
         <View style={styles.mapContainer}>
             <MapView
                 ref={props.mapRef}
+                customMapStyle={mapStyle}
                 style={{
                     width: props.dimensions.width,
                     height: props.dimensions.height,

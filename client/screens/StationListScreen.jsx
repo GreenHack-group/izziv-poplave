@@ -70,6 +70,7 @@ export const StationListScreen = (props) => {
             <FlatList
                 data={filteredStations}
                 renderItem={renderStationListItem}
+                keyExtractor={(item) => item.stationId}
             />
         </Container>
     )
