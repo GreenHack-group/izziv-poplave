@@ -36,7 +36,7 @@ export const WelcomeScreen = (props) => {
             case SUB_SCREEN.LOCATION:
                 return <LocationPermissionsScreen onClickNext={navigateNext} />
             case SUB_SCREEN.COMPLETE:
-                const finishSetup = () => props.navigation.navigate('Map')
+                const finishSetup = () => props.navigation.navigate('Home')
                 return <YouAreAllSetupScreen onClickNext={finishSetup} />
         }
     }

@@ -1,11 +1,17 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
+import React, {
+    createRef,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+} from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions } from 'react-native'
-import { fetchStations } from '../Api/BackendAPI'
 import { Container } from '../components/Container'
 import { Map } from '../components/Map'
 import { BottomDweller } from '../components/BottomDweller'
 import { ListItem } from '../components/StationList/ListItem'
+import { StationsContext } from '../context/StationsContext'
 
 /**
  * Screen with a map widget
@@ -13,26 +19,14 @@ import { ListItem } from '../components/StationList/ListItem'
  * @returns
  */
 export const MapScreen = (props) => {
-    const [stations, setStations] = useState([])
-    const [isLoading, setLoading] = useState(false)
+    const { stations, isLoading } = useContext(StationsContext)
     const [selectedStation, setSelectedStation] = useState(null)
     const mapRef = useRef(null)
     const dwellerRef = useRef(null)
-
+    const dimensions = Dimensions.get('window')
     useEffect(() => {
-        retrieveStationsFromAPI()
         if (dwellerRef.current) dwellerRef.current.close()
     }, [])
-
-    const retrieveStationsFromAPI = async () => {
-        setLoading(true)
-        console.log('Stations fetching ...')
-        const data = await fetchStations()
-        setLoading(false)
-        setStations(data)
-    }
-
-    const dimensions = Dimensions.get('window')
 
     const handleInfoPress = (stationId) =>
         props.navigation.navigate('Station', { stationId })

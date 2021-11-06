@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import theme from './shared/theme'
 import { useFonts, Roboto_500Medium } from '@expo-google-fonts/roboto'
@@ -9,9 +10,21 @@ import { WelcomeScreen } from './screens/WelcomeScreen'
 import { MapScreen } from './screens/MapScreen'
 import { StationScreen } from './screens/StationScreen'
 import { SettingsScreen } from './screens/SettingsScreen'
+import { StationListScreen } from './screens/StationListScreen'
 import OnStartAnimation from './components/Animations/OnStartAnimation'
+import { StationsProvider } from './context/StationsContext'
 
 const Stack = createNativeStackNavigator()
+const Tab = createMaterialTopTabNavigator()
+
+const HomeTabs = () => (
+    <StationsProvider>
+        <Tab.Navigator>
+            <Tab.Screen name="Stations" component={StationListScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
+        </Tab.Navigator>
+    </StationsProvider>
+)
 
 /**
  * Application entry point
@@ -26,7 +39,7 @@ export default function App() {
 
     const [startingAnimation, setStartingAnimation] = useState(true)
 
-    if (startingAnimation) {
+    if (startingAnimation || !fontsLoaded) {
         return (
             <OnStartAnimation
                 onAnimationFinished={() => setStartingAnimation(false)}
@@ -44,7 +57,11 @@ export default function App() {
                         headerShown: false,
                     }}
                 />
-                <Stack.Screen name="Map" component={MapScreen} />
+                <Stack.Screen
+                    name="Home"
+                    component={HomeTabs}
+                    options={{ headerBackVisible: false }}
+                />
                 <Stack.Screen name="Station" component={StationScreen} />
                 <Stack.Screen name="Settings" component={SettingsScreen} />
             </Stack.Navigator>
