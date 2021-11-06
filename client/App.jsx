@@ -13,15 +13,37 @@ import { SettingsScreen } from './screens/SettingsScreen'
 import { StationListScreen } from './screens/StationListScreen'
 import OnStartAnimation from './components/Animations/OnStartAnimation'
 import { StationsProvider } from './context/StationsContext'
+import PozivkoWhite from './components/Icons/PozivkoWhite'
 
 const Stack = createNativeStackNavigator()
 const Tab = createMaterialTopTabNavigator()
 
 const HomeTabs = () => (
     <StationsProvider>
-        <Tab.Navigator>
-            <Tab.Screen name="Stations" component={StationListScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Navigator
+            screenOptions={{
+                tabBarStyle: {
+                    backgroundColor: theme.COLORS.primary,
+                    paddingBottom: theme.LAYOUT.paddingSmall,
+                },
+                tabBarActiveTintColor: theme.COLORS.white,
+                tabBarInactiveTintColor: theme.COLORS.softBlue,
+                tabBarIndicatorStyle: {
+                    backgroundColor: theme.COLORS.white,
+                    height: 5,
+                },
+            }}
+        >
+            <Tab.Screen
+                name="Stations"
+                component={StationListScreen}
+                options={{ title: 'Seznam postaj' }}
+            />
+            <Tab.Screen
+                name="Map"
+                component={MapScreen}
+                options={{ title: 'Zemljevid' }}
+            />
         </Tab.Navigator>
     </StationsProvider>
 )
@@ -60,7 +82,7 @@ export default function App() {
                 <Stack.Screen
                     name="Home"
                     component={HomeTabs}
-                    options={{ headerBackVisible: false }}
+                    options={{ headerBackVisible: false, title: 'Pozivko' }}
                 />
                 <Stack.Screen name="Station" component={StationScreen} />
                 <Stack.Screen name="Settings" component={SettingsScreen} />
@@ -76,6 +98,8 @@ const HeaderOptions = {
     headerTintColor: theme.COLORS.white,
     headerTitleStyle: {
         fontWeight: theme.FONTS.BOLD,
-        fontFamily: 'Roboto_500Medium',
+        fontFamily: theme.FONTS.ROBOTO,
+        fontSize: theme.FONTS.SIZE_XL,
     },
+    headerRight: () => <PozivkoWhite />,
 }

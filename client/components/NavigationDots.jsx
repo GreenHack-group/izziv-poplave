@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         width: 7,
         borderRadius: 100,
         marginRight: theme.LAYOUT.paddingMedium,
-        backgroundColor: theme.COLORS.lightGray,
+        backgroundColor: theme.COLORS.softBlue,
     },
     dot_active: {
         height: 7,

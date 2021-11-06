@@ -156,7 +156,7 @@ const subScreenProps = {
 
 const styles = StyleSheet.create({
     welcomeWrapper: {
-        backgroundColor: theme.COLORS.white,
+        backgroundColor: theme.COLORS.background,
         paddingHorizontal: theme.LAYOUT.paddingLarge * 2,
         flex: 1,
         marginHorizontal: 'auto',
