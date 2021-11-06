@@ -9,6 +9,13 @@ module.exports = {
         softBlue: '#c2d1e5',
         darkBlue: '#0d2438',
         background: '#E9F1FC',
+        dangerLevels: {
+            0: '#A6FFCB',
+            1: '#FFD076',
+            2: '#FFEB84',
+            3: '#FF7474',
+            4: '#5433ff',
+        },
     },
     LAYOUT: {
         paddingSmall: 5,
