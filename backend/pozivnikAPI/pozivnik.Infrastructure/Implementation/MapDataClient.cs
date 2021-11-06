@@ -101,21 +101,7 @@ namespace pozivnik.Infrastructure.Implementation
                         WaterFlowGroup = (xn["pretok_znacilni"] == null || xn["pretok_znacilni"].InnerText == "")
                                           ? null : xn["pretok_znacilni"].InnerText,
                         WaterTemperature = (xn["temp_vode"] == null || xn["temp_vode"].InnerText == "")
-                                            ? null : float.Parse(xn["temp_vode"].InnerText),
-                        FirstHWLevel = (xn["prvi_vv_vodostaj"] == null || xn["prvi_vv_vodostaj"].InnerText == "")
-                                        ? null : float.Parse(xn["prvi_vv_vodostaj"].InnerText),
-                        SecondHWLevel = (xn["drugi_vv_vodostaj"] == null || xn["drugi_vv_vodostaj"].InnerText == "")
-                                         ? null : float.Parse(xn["drugi_vv_vodostaj"].InnerText),
-                        ThirdHWLevel = (xn["tretji_vv_vodostaj"] == null || xn["tretji_vv_vodostaj"].InnerText == "")
-                                        ? null : float.Parse(xn["tretji_vv_vodostaj"].InnerText),
-                        FirstHWFlow = (xn["prvi_vv_pretok"] == null || xn["prvi_vv_pretok"].InnerText == "")
-                                       ? null : float.Parse(xn["prvi_vv_pretok"].InnerText),
-                        SecondHWFlow = (xn["drugi_vv_pretok"] == null || xn["drugi_vv_pretok"].InnerText == "")
-                                        ? null : float.Parse(xn["drugi_vv_pretok"].InnerText),
-                        ThirdHWFlow = (xn["tretji_vv_pretok"] == null || xn["tretji_vv_pretok"].InnerText == "")
-                                       ? null : float.Parse(xn["tretji_vv_pretok"].InnerText),
-                        WaveHeight = (xn["znacilna_visina_valov"] == null || xn["znacilna_visina_valov"].InnerText == "")
-                                        ? null : float.Parse(xn["znacilna_visina_valov"].InnerText)
+                                            ? null : float.Parse(xn["temp_vode"].InnerText)
                     };
                     return hy;
                 }

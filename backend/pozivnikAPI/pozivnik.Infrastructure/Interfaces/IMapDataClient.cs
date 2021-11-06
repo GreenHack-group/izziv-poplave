@@ -15,5 +15,7 @@ namespace pozivnik.Infrastructure.Interfaces
         public Task<List<HydrologicalStationDto>> FetchAllStationsXML();
         public List<MeasurementDto> FetchGraphData(string stationId);
 
+        
+
     }
 }
