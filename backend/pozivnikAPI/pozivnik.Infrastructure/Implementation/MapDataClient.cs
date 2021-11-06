@@ -43,7 +43,7 @@ namespace pozivnik.Infrastructure.Implementation
             {
                 MeasurementDto measurement = new MeasurementDto {
                     DateOfMeasurement = DateTime.Parse(rdr.GetString(0)),
-                    waterLevel = float.Parse(rdr.GetString(1)),
+                    waterLevel = float.Parse(rdr.GetString(1))/100,
                     waterFlow = float.Parse(rdr.GetString(2)),
                     waterTemperature = float.Parse(rdr.GetString(3)),
                 };
