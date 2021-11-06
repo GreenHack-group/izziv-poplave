@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     stationPic: {
         width: '100%',
-        height: 250,
+        height: 200,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
     },

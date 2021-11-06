@@ -8,6 +8,7 @@ import { StationPropertiesWidgetLarge } from '../components/StationProperties/St
 import { StationProfileImage } from '../components/StationProperties/StationProfileImage'
 import { fetchStationById } from '../Api/BackendAPI'
 import OnStartAnimation from '../components/Animations/OnStartAnimation'
+import {StationPropertiesWidgetGraf} from "../components/StationProperties/StationPropertiesWidgetGraf";
 /**
  * Screen to display station info and more
  * @param {object} props
@@ -46,7 +47,16 @@ export const StationScreen = (props) => {
 
     return (
         <StationPropertiesContainer>
-            <StationProfileImage />
+            <View>
+                <StationProfileImage/>
+                    <View style={{position: 'absolute', left: theme.LAYOUT.paddingMedium, bottom: theme.LAYOUT.paddingMedium}}>
+                        <Text style={styles.title}>{stationData.measuringPoint}</Text>
+                    </View>
+            </View>
+
+            <Text style={styles.text}>{stationData.river}</Text>
+            <Text style={styles.text}>{stationData.dateAndTime}</Text>
+
             <View
                 style={{
                     paddingHorizontal: theme.LAYOUT.paddingLarge,
@@ -57,15 +67,15 @@ export const StationScreen = (props) => {
                     <View
                         style={{
                             flexDirection: 'row',
-                            justifyContent: 'space-between',
+                            justifyContent: 'space-evenly',
                         }}
                     >
                         <View>
-                            <Text>{stationData.measuringPoint}</Text>
+                            <Text>{stationData.waterLevel} m</Text>
                         </View>
                         <Separator />
                         <View>
-                            <Text>Desna</Text>
+                            <Text>{stationData.waterTemperature} °C</Text>
                         </View>
                     </View>
                 </StationPropertiesWidgetSmall>
@@ -78,30 +88,17 @@ export const StationScreen = (props) => {
                         }}
                     >
                         <View>
-                            <Text>Leva</Text>
+                            <Text>ANIMACIJA VODOSTAJA</Text>
                         </View>
                         <View>
-                            <Text>Leva</Text>
+                            <Text>ANIMACIJA PRETOKA</Text>
                         </View>
                     </View>
                 </StationPropertiesWidgetLarge>
 
-                <StationPropertiesWidgetSmall>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        <View>
-                            <Text>Leva</Text>
-                        </View>
-                        <Separator />
-                        <View>
-                            <Text>Desna Spodaj</Text>
-                        </View>
-                    </View>
-                </StationPropertiesWidgetSmall>
+                <StationPropertiesWidgetGraf>
+                    <Text style={{justifyContent: 'right'}}>GRAFI TO BE</Text>
+                </StationPropertiesWidgetGraf>
             </View>
         </StationPropertiesContainer>
     )
@@ -111,16 +108,14 @@ const styles = StyleSheet.create({
     title: {
         fontSize: theme.FONTS.SIZE_LG,
         fontWeight: theme.FONTS.BOLD,
+        color: theme.COLORS.white,
         padding: theme.LAYOUT.paddingMedium,
     },
     text: {
         fontSize: theme.FONTS.SIZE_MD,
-        padding: theme.LAYOUT.paddingSmall,
+        paddingHorizontal: theme.LAYOUT.paddingLarge,
     },
     separator: {
-        //marginVertical: 8,
-        //borderBottomColor: theme.COLORS.black,
-        //borderBottomWidth: 1,
         height: '100%',
         width: 1,
         backgroundColor: '#909090',
