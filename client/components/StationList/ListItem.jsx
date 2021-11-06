@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: theme.LAYOUT.paddingLarge,
+        paddingVertical: theme.LAYOUT.paddingSmall,
         marginBottom: theme.LAYOUT.paddingSmall,
         borderBottomColor: theme.COLORS.softBlue,
         borderBottomWidth: 1,

@@ -3,6 +3,8 @@ import { View, Text, Pressable, StyleSheet, Image } from 'react-native'
 import theme from '../shared/theme'
 import { SmallText } from '../components/PozivkoText'
 import { Feather } from '@expo/vector-icons'
+import dangerLevels from '../shared/dangerLevels'
+import { DangerLevelDot } from './DangerLevelDot'
 
 const StationListItem = (props) => {
     return (
@@ -33,7 +35,8 @@ const StationListItem = (props) => {
                 >
                     Stopnja nevarnosti poplav:
                 </SmallText>
-                <SmallText>Nizka</SmallText>
+                <SmallText>{dangerLevels[props.station.dangerLevel]}</SmallText>
+                <DangerLevelDot dangerLevel={props.station.dangerLevel} />
             </View>
         </Pressable>
     )
