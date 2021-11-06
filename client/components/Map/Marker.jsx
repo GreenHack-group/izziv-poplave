@@ -4,6 +4,7 @@ import { Marker } from 'react-native-maps'
 import { StationProps } from '../../shared/types'
 import { MaterialIcons } from '@expo/vector-icons'
 import theme from '../../shared/theme'
+import MarkerIcon from '../Icons/MarkerIcon'
 
 export const PozivkoMarker = memo(({ marker, onMarkerPressed }) => {
     return (
@@ -17,11 +18,7 @@ export const PozivkoMarker = memo(({ marker, onMarkerPressed }) => {
             }}
             onPress={() => onMarkerPressed(marker)}
         >
-            <MaterialIcons
-                name="water-damage"
-                size={24}
-                color={theme.COLORS.primary}
-            />
+            <MarkerIcon />
         </Marker>
     )
 })
