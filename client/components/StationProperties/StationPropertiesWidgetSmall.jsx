@@ -13,8 +13,7 @@ import {Text} from "react-native-web";
  * @returns
  */
 export const StationPropertiesWidgetSmall = (props) => {
-    return <View style={styles.container}>{props.children}
-    </View>
+    return <View style={styles.container}>{props.children} </View>
 }
 
 const styles = StyleSheet.create({

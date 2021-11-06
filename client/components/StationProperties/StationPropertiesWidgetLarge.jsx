@@ -12,10 +12,7 @@ import theme from '../../shared/theme'
  * @returns
  */
 export const StationPropertiesWidgetLarge = (props) => {
-    return <View style={styles.container}>
-        {props.children}
-
-    </View>
+    return <View style={styles.container}> {props.children} </View>
 }
 
 const styles = StyleSheet.create({

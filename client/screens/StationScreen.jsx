@@ -17,6 +17,17 @@ export const StationScreen = (props) => {
 
     //             <Text style={styles.title}>Station properties screen</Text>
     //             <Text style={styles.text}>Properties for station with id: {stationId}</Text>
+    /*
+        <Text> Testing small widget left</Text>
+        <Text> Testing small widget right</Text>
+
+        <Text> Testing large widget 2</Text>
+
+                    <Text> Testing small widget left 2</Text>
+                    <Text> Testing small widget right 2</Text>
+     */
+
+
 
     const { stationId } = props.route.params
     return (
@@ -27,17 +38,18 @@ export const StationScreen = (props) => {
             </StationProfileImage>
 
             <View style={{ paddingHorizontal: theme.LAYOUT.paddingLarge, flex: 1 }}>
+
                 <StationPropertiesWidgetSmall>
-                    <Text> Testing small widget</Text>
+
                 </StationPropertiesWidgetSmall>
 
                 <StationPropertiesWidgetLarge>
-                    <Text> Testing large widget 2</Text>
                 </StationPropertiesWidgetLarge>
 
                 <StationPropertiesWidgetSmall>
-                    <Text> Testing small widget 2</Text>
+
                 </StationPropertiesWidgetSmall>
+
             </View>
         </StationPropertiesContainer>
     )
