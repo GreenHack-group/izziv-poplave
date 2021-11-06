@@ -12,7 +12,7 @@ namespace pozivnik.Core.Station
         public string? River { get; set; }
         public string? MeasuringPoint { get; set; }
         public DateTime? DateAndTime { get; set; }
-        public int? WaterLevel { get; set; }
+        public float? WaterLevel { get; set; }
         public string? WaterLevelGroup { get; set; }
         public float? WaterFlow { get; set; }
         public string? WaterFlowGroup { get; set; }

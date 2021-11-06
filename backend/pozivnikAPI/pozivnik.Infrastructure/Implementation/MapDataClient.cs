@@ -133,7 +133,7 @@ namespace pozivnik.Infrastructure.Implementation
                         DateAndTime = (xn["datum"] == null || xn["datum"].InnerText == "")
                                         ? null : DateTime.Parse(xn["datum"].InnerText),
                         WaterLevel = (xn["vodostaj"] == null || xn["vodostaj"].InnerText == "")
-                                        ? null : int.Parse(xn["vodostaj"].InnerText),
+                                        ? null : float.Parse(xn["vodostaj"].InnerText)/100,
                         WaterLevelGroup = (xn["vodostaj_znacilni"] == null || xn["vodostaj_znacilni"].InnerText == "")
                                             ? null : xn["vodostaj_znacilni"].InnerText,
                         WaterFlow = (xn["pretok"] == null || xn["pretok"].InnerText == "")
