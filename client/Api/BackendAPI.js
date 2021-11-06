@@ -1,4 +1,5 @@
 import { create } from 'apisauce'
+const mock = require('./mock-data.json')
 
 // TODO replace with real backend api
 
@@ -8,7 +9,7 @@ const dummyApi = create({
 
 export const fetchStations = async () => {
     // const response = await fetch(`${BASE_URL}/stations`)
-    const response = await dummyApi.get('/Map/stationMarkers')
-    const data = await response.data
-    return data
+    //const response = await dummyApi.get('/Map/stationMarkers')
+    //const data = await response.data
+    return mock
 }
