@@ -19,7 +19,7 @@ export const ListItem = (props) => (
                 size={48}
                 color={theme.COLORS.primary}
             />
-            <BoldText style={styles.title}>
+            <BoldText marginLeft={theme.LAYOUT.paddingSmall}>
                 {props.station.measuringPoint}
             </BoldText>
         </View>
@@ -54,11 +54,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
-    },
-    title: {
-        fontWeight: theme.FONTS.BOLD,
-        marginLeft: theme.LAYOUT.paddingSmall,
-        fontSize: theme.FONTS.SIZE_BASE,
     },
 })
 

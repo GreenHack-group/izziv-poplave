@@ -36,7 +36,8 @@ export const WelcomeScreen = (props) => {
             case SUB_SCREEN.LOCATION:
                 return <LocationPermissionsScreen onClickNext={navigateNext} />
             case SUB_SCREEN.COMPLETE:
-                return <YouAreAllSetupScreen onClickNext={navigateNext} />
+                const finishSetup = () => props.navigation.navigate('Map')
+                return <YouAreAllSetupScreen onClickNext={finishSetup} />
         }
     }
 
@@ -101,7 +102,8 @@ const YouAreAllSetupScreen = (props) => {
     return (
         <View>
             <Pressable onPress={props.onClickNext}>
-                <Text onPress={props.onClickNext}>3</Text>
+                <Text onPress={props.onClickNext}>TODO: animation</Text>
+                <DefaultButton title={'To map'} onPress={props.onClickNext} />
             </Pressable>
         </View>
     )
