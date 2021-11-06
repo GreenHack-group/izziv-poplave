@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/pozivnikAPI20211106154402-apim/apis/pozivko",
+      "type": "apis.azure"
+    }
+  }
+}

@@ -8,7 +8,6 @@ using System.Xml;
 namespace pozivnik.API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
     [ApiController]
     public class MapController : ControllerBase
     {
@@ -52,5 +51,11 @@ namespace pozivnik.API.Controllers
             return response;
         }
 
-    }
+        [HttpGet]
+        [Route("meow")]
+        public string getMeow()
+        {
+            return "meow mepw";
+        }
+    }               
 }
