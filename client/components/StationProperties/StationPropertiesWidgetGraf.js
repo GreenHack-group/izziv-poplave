@@ -11,7 +11,7 @@ import theme from '../../shared/theme'
  * @param {object} props
  * @returns
  */
-export const StationPropertiesWidgetLarge = (props) => {
+export const StationPropertiesWidgetGraf = (props) => {
     return <View style={styles.container}>{props.children}</View>
 }
 
@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginVertical: 5,
         color: theme.COLORS.black,
-        flex: 0.4,
+        flex: 0.5,
         borderRadius: 20,
     },
 })
 
-StationPropertiesWidgetLarge.propTypes = {
+StationPropertiesWidgetGraf.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.node,
         PropTypes.arrayOf(PropTypes.node),
