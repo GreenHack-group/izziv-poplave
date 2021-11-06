@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {StyleSheet, Text, View} from 'react-native'
-import { StationPropertiesContainer } from "../components/StationPropertiesContainer";
-import {StationPropertiesWidgetSmall} from "../components/StationProperties/StationPropertiesWidgetSmall";
-import theme from "../shared/theme";
-import {StationPropertiesWidgetLarge} from "../components/StationProperties/StationPropertiesWidgetLarge";
-import { StationProfileImage } from "../components/StationProperties/StationProfileImage";
+import { StyleSheet, Text, View } from 'react-native'
+import { StationPropertiesContainer } from '../components/StationPropertiesContainer'
+import { StationPropertiesWidgetSmall } from '../components/StationProperties/StationPropertiesWidgetSmall'
+import theme from '../shared/theme'
+import { StationPropertiesWidgetLarge } from '../components/StationProperties/StationPropertiesWidgetLarge'
+import { StationProfileImage } from '../components/StationProperties/StationProfileImage'
+import { fetchStationById } from '../Api/BackendAPI'
+import OnStartAnimation from '../components/Animations/OnStartAnimation'
 /**
  * Screen to display station info and more
  * @param {object} props
  * @returns
  */
-    // Will be used to fetch specific station info
-    // TODO podatki o postajo in background color
+// Will be used to fetch specific station info
+// TODO podatki o postajo in background color
 
-export const Separator = () => (
-  <View style={styles.separator} />
-);
+export const Separator = () => <View style={styles.separator} />
 
 /**
  * Screen to display station info and more
@@ -26,56 +26,86 @@ export const Separator = () => (
 export const StationScreen = (props) => {
     // Will be used to fetch specific station info
     const { stationId } = props.route.params
+    const [isLoading, setLoading] = useState(false)
+    const [stationData, setStationData] = useState(null)
+
+    useEffect(() => {
+        retriveStationData()
+    }, []) // On init
+
+    const retriveStationData = async () => {
+        setLoading(true)
+        const data = await fetchStationById(stationId)
+        setLoading(false)
+        setStationData(data)
+    }
+
+    if (isLoading) {
+        return <OnStartAnimation />
+    }
+
     return (
         <StationPropertiesContainer>
-            <StationProfileImage>
-            </StationProfileImage>
-                <View style={{ paddingHorizontal: theme.LAYOUT.paddingLarge, flex: 1 }}>
-
-                    <StationPropertiesWidgetSmall>
-
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <View >
-                                <Text>Leva</Text>
-                            </View>
-                                <Separator/>
-                            <View >
-                                <Text>Desna</Text>
-                            </View>
+            <StationProfileImage />
+            <View
+                style={{
+                    paddingHorizontal: theme.LAYOUT.paddingLarge,
+                    flex: 1,
+                }}
+            >
+                <StationPropertiesWidgetSmall>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <View>
+                            <Text>{stationData.measuringPoint}</Text>
                         </View>
-
-                    </StationPropertiesWidgetSmall>
-
-                    <StationPropertiesWidgetLarge>
-
-                        <View style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-                            <View >
-                                <Text>Leva</Text>
-                            </View>
-                            <View >
-                                <Text>Leva</Text>
-                            </View>
+                        <Separator />
+                        <View>
+                            <Text>Desna</Text>
                         </View>
+                    </View>
+                </StationPropertiesWidgetSmall>
 
-                    </StationPropertiesWidgetLarge>
-
-                    <StationPropertiesWidgetSmall>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <View >
-                                <Text>Leva Spodaj</Text>
-                            </View>
-                                <Separator/>
-                            <View >
-                                <Text>Desna Spodaj</Text>
-                            </View>
+                <StationPropertiesWidgetLarge>
+                    <View
+                        style={{
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <View>
+                            <Text>Leva</Text>
                         </View>
-                    </StationPropertiesWidgetSmall>
+                        <View>
+                            <Text>Leva</Text>
+                        </View>
+                    </View>
+                </StationPropertiesWidgetLarge>
 
-                </View>
+                <StationPropertiesWidgetSmall>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <View>
+                            <Text>Leva</Text>
+                        </View>
+                        <Separator />
+                        <View>
+                            <Text>Desna Spodaj</Text>
+                        </View>
+                    </View>
+                </StationPropertiesWidgetSmall>
+            </View>
         </StationPropertiesContainer>
     )
 }
-
 
 const styles = StyleSheet.create({
     title: {
@@ -94,7 +124,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: 1,
         backgroundColor: '#909090',
-  },
+    },
 })
 
 StationScreen.propTypes = {

@@ -36,7 +36,7 @@ export const MapScreen = (props) => {
 
     const handleInfoPress = (stationId) => {
         props.navigation.navigate('Station', { stationId })
-        console.log("clicked on station info")
+        console.log('clicked on station info')
     }
 
     const animateToStation = (station) => {
@@ -57,7 +57,7 @@ export const MapScreen = (props) => {
         setSelectedStation(station)
         animateToStation(station)
         if (dwellerRef.current) dwellerRef.current.expand()
-        console.log("pritisnjen station na mapi")
+        console.log('pritisnjen station na mapi')
     }
 
     return (

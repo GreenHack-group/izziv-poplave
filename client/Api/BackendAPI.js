@@ -10,3 +10,11 @@ export const fetchStations = async () => {
     const data = await response.data
     return data
 }
+
+export const fetchStationById = async (stationId) => {
+    const response = await backendAPI.get(
+        `/Map/station?stationId=${parseInt(stationId)}`
+    )
+    const data = await response.data
+    return data
+}
