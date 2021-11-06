@@ -1,0 +1,1241 @@
+[
+    {
+        "stationId": 1060,
+        "river": "Mura",
+        "measuringPoint": "Gornja Radgona",
+        "longitude": 16.000254,
+        "latitude": 46.68151
+    },
+    {
+        "stationId": 1070,
+        "river": "Mura",
+        "measuringPoint": "Petanjci",
+        "longitude": 16.059244,
+        "latitude": 46.648823
+    },
+    {
+        "stationId": 1100,
+        "river": "Kučnica",
+        "measuringPoint": "Cankova",
+        "longitude": 16.026247,
+        "latitude": 46.711323
+    },
+    {
+        "stationId": 1140,
+        "river": "Ščavnica",
+        "measuringPoint": "Pristava",
+        "longitude": 16.236727,
+        "latitude": 46.51891
+    },
+    {
+        "stationId": 1165,
+        "river": "Ledava",
+        "measuringPoint": "Nuskova",
+        "longitude": 16.032469,
+        "latitude": 46.810436
+    },
+    {
+        "stationId": 1220,
+        "river": "Ledava",
+        "measuringPoint": "Polana",
+        "longitude": 16.142076,
+        "latitude": 46.678364
+    },
+    {
+        "stationId": 1260,
+        "river": "Ledava",
+        "measuringPoint": "Čentiba",
+        "longitude": 16.48256,
+        "latitude": 46.53556
+    },
+    {
+        "stationId": 1300,
+        "river": "Martjanski potok",
+        "measuringPoint": "Martjanci",
+        "longitude": 16.191113,
+        "latitude": 46.686646
+    },
+    {
+        "stationId": 1312,
+        "river": "Kobiljski potok",
+        "measuringPoint": "Kobilje",
+        "longitude": 16.398338,
+        "latitude": 46.685604
+    },
+    {
+        "stationId": 1335,
+        "river": "Ivanjševski potok",
+        "measuringPoint": "Središče",
+        "longitude": 16.317112,
+        "latitude": 46.770294
+    },
+    {
+        "stationId": 1355,
+        "river": "Velika Krka",
+        "measuringPoint": "Hodoš",
+        "longitude": 16.337982,
+        "latitude": 46.814514
+    },
+    {
+        "stationId": 2005,
+        "river": "Drava",
+        "measuringPoint": "Črneče",
+        "longitude": 14.988709,
+        "latitude": 46.59821
+    },
+    {
+        "stationId": 2110,
+        "river": "Drava",
+        "measuringPoint": "Ptuj",
+        "longitude": 15.872409,
+        "latitude": 46.417217
+    },
+    {
+        "stationId": 2150,
+        "river": "Drava",
+        "measuringPoint": "Borl",
+        "longitude": 16.001076,
+        "latitude": 46.371292
+    },
+    {
+        "stationId": 2160,
+        "river": "Drava",
+        "measuringPoint": "Zavrč",
+        "longitude": 16.041742,
+        "latitude": 46.388653
+    },
+    {
+        "stationId": 2220,
+        "river": "Meža",
+        "measuringPoint": "Črna",
+        "longitude": 14.853217,
+        "latitude": 46.470734
+    },
+    {
+        "stationId": 2250,
+        "river": "Meža",
+        "measuringPoint": "Otiški Vrh",
+        "longitude": 15.030756,
+        "latitude": 46.578094
+    },
+    {
+        "stationId": 2372,
+        "river": "Mislinja",
+        "measuringPoint": "Dovže",
+        "longitude": 15.152306,
+        "latitude": 46.45696
+    },
+    {
+        "stationId": 2390,
+        "river": "Mislinja",
+        "measuringPoint": "Otiški Vrh",
+        "longitude": 15.042074,
+        "latitude": 46.567852
+    },
+    {
+        "stationId": 2420,
+        "river": "Suhodolnica",
+        "measuringPoint": "Stari trg",
+        "longitude": 15.077353,
+        "latitude": 46.50473
+    },
+    {
+        "stationId": 2432,
+        "river": "Bistrica",
+        "measuringPoint": "Muta",
+        "longitude": 15.168566,
+        "latitude": 46.61252
+    },
+    {
+        "stationId": 2530,
+        "river": "Radoljna",
+        "measuringPoint": "Ruta",
+        "longitude": 15.423649,
+        "latitude": 46.55871
+    },
+    {
+        "stationId": 2600,
+        "river": "Dravinja",
+        "measuringPoint": "Zreče",
+        "longitude": 15.3882,
+        "latitude": 46.38017
+    },
+    {
+        "stationId": 2620,
+        "river": "Dravinja",
+        "measuringPoint": "Loče",
+        "longitude": 15.498547,
+        "latitude": 46.301853
+    },
+    {
+        "stationId": 2640,
+        "river": "Dravinja",
+        "measuringPoint": "Makole",
+        "longitude": 15.675295,
+        "latitude": 46.319584
+    },
+    {
+        "stationId": 2652,
+        "river": "Dravinja",
+        "measuringPoint": "Videm",
+        "longitude": 15.907876,
+        "latitude": 46.36865
+    },
+    {
+        "stationId": 2667,
+        "river": "Oplotnica",
+        "measuringPoint": "Perovec",
+        "longitude": 15.492589,
+        "latitude": 46.339626
+    },
+    {
+        "stationId": 2693,
+        "river": "Ložnica",
+        "measuringPoint": "Spodnja Ložnica",
+        "longitude": 15.65561,
+        "latitude": 46.337353
+    },
+    {
+        "stationId": 2719,
+        "river": "Rogatnica",
+        "measuringPoint": "Podlehnik",
+        "longitude": 15.883341,
+        "latitude": 46.332775
+    },
+    {
+        "stationId": 2754,
+        "river": "Polskava",
+        "measuringPoint": "Tržec",
+        "longitude": 15.882973,
+        "latitude": 46.363968
+    },
+    {
+        "stationId": 2830,
+        "river": "Pesnica",
+        "measuringPoint": "Ranca",
+        "longitude": 15.686378,
+        "latitude": 46.59975
+    },
+    {
+        "stationId": 2880,
+        "river": "Pesnica",
+        "measuringPoint": "Gočova",
+        "longitude": 15.873514,
+        "latitude": 46.55709
+    },
+    {
+        "stationId": 2900,
+        "river": "Pesnica",
+        "measuringPoint": "Zamušani",
+        "longitude": 16.03889,
+        "latitude": 46.414433
+    },
+    {
+        "stationId": 3014,
+        "river": "Sava Dolinka",
+        "measuringPoint": "Kranjska Gora",
+        "longitude": 13.790111,
+        "latitude": 46.48963
+    },
+    {
+        "stationId": 3060,
+        "river": "Sava Dolinka",
+        "measuringPoint": "Jesenice",
+        "longitude": 14.05902,
+        "latitude": 46.43421
+    },
+    {
+        "stationId": 3080,
+        "river": "Sava Dolinka",
+        "measuringPoint": "Blejski most",
+        "longitude": 14.139295,
+        "latitude": 46.36791
+    },
+    {
+        "stationId": 3180,
+        "river": "Radovna",
+        "measuringPoint": "Podhom",
+        "longitude": 14.090418,
+        "latitude": 46.39384
+    },
+    {
+        "stationId": 3200,
+        "river": "Sava Bohinjka",
+        "measuringPoint": "Sveti Janez",
+        "longitude": 13.891265,
+        "latitude": 46.278625
+    },
+    {
+        "stationId": 3250,
+        "river": "Sava Bohinjka",
+        "measuringPoint": "Bodešče",
+        "longitude": 14.146584,
+        "latitude": 46.342274
+    },
+    {
+        "stationId": 3260,
+        "river": "Savica",
+        "measuringPoint": "Ukanc",
+        "longitude": 13.834237,
+        "latitude": 46.281303
+    },
+    {
+        "stationId": 3280,
+        "river": "Bohinjsko jezero",
+        "measuringPoint": "Sveti Duh",
+        "longitude": 13.869493,
+        "latitude": 46.279076
+    },
+    {
+        "stationId": 3300,
+        "river": "Mostnica",
+        "measuringPoint": "Stara Fužina",
+        "longitude": 13.893873,
+        "latitude": 46.283184
+    },
+    {
+        "stationId": 3320,
+        "river": "Bistrica",
+        "measuringPoint": "Bohinjska Bistrica",
+        "longitude": 13.954763,
+        "latitude": 46.273922
+    },
+    {
+        "stationId": 3350,
+        "river": "Blejsko jezero",
+        "measuringPoint": "Mlino",
+        "longitude": 14.103933,
+        "latitude": 46.360313
+    },
+    {
+        "stationId": 3400,
+        "river": "Jezernica",
+        "measuringPoint": "Mlino",
+        "longitude": 14.104681,
+        "latitude": 46.357464
+    },
+    {
+        "stationId": 3420,
+        "river": "Sava",
+        "measuringPoint": "Radovljica",
+        "longitude": 14.170064,
+        "latitude": 46.340378
+    },
+    {
+        "stationId": 3465,
+        "river": "Sava",
+        "measuringPoint": "Okroglo",
+        "longitude": 14.324355,
+        "latitude": 46.256268
+    },
+    {
+        "stationId": 3530,
+        "river": "Sava",
+        "measuringPoint": "Medno",
+        "longitude": 14.445225,
+        "latitude": 46.122845
+    },
+    {
+        "stationId": 3570,
+        "river": "Sava",
+        "measuringPoint": "Šentjakob",
+        "longitude": 14.58715,
+        "latitude": 46.084347
+    },
+    {
+        "stationId": 3660,
+        "river": "Sava",
+        "measuringPoint": "Litija",
+        "longitude": 14.833571,
+        "latitude": 46.057037
+    },
+    {
+        "stationId": 3725,
+        "river": "Sava",
+        "measuringPoint": "Hrastnik",
+        "longitude": 15.095515,
+        "latitude": 46.12208
+    },
+    {
+        "stationId": 3850,
+        "river": "Sava",
+        "measuringPoint": "Čatež",
+        "longitude": 15.614849,
+        "latitude": 45.893448
+    },
+    {
+        "stationId": 3900,
+        "river": "Sava",
+        "measuringPoint": "Jesenice na Dolenjskem",
+        "longitude": 15.697319,
+        "latitude": 45.86074
+    },
+    {
+        "stationId": 4025,
+        "river": "Lipnica",
+        "measuringPoint": "Ovsiše",
+        "longitude": 14.262922,
+        "latitude": 46.288895
+    },
+    {
+        "stationId": 4050,
+        "river": "Tržiška Bistrica",
+        "measuringPoint": "Preska",
+        "longitude": 14.304307,
+        "latitude": 46.35819
+    },
+    {
+        "stationId": 4120,
+        "river": "Kokra",
+        "measuringPoint": "Kokra",
+        "longitude": 14.503621,
+        "latitude": 46.30619
+    },
+    {
+        "stationId": 4155,
+        "river": "Kokra",
+        "measuringPoint": "Kranj",
+        "longitude": 14.364289,
+        "latitude": 46.243397
+    },
+    {
+        "stationId": 4200,
+        "river": "Sora",
+        "measuringPoint": "Suha",
+        "longitude": 14.330737,
+        "latitude": 46.162354
+    },
+    {
+        "stationId": 4209,
+        "river": "Sora",
+        "measuringPoint": "Medvode",
+        "longitude": 14.418119,
+        "latitude": 46.1395
+    },
+    {
+        "stationId": 4222,
+        "river": "Poljanska Sora",
+        "measuringPoint": "Žiri",
+        "longitude": 14.111466,
+        "latitude": 46.043915
+    },
+    {
+        "stationId": 4230,
+        "river": "Poljanska Sora",
+        "measuringPoint": "Zminec",
+        "longitude": 14.294838,
+        "latitude": 46.15334
+    },
+    {
+        "stationId": 4270,
+        "river": "Selška Sora",
+        "measuringPoint": "Železniki",
+        "longitude": 14.16653,
+        "latitude": 46.222294
+    },
+    {
+        "stationId": 4298,
+        "river": "Selška Sora",
+        "measuringPoint": "Vešter",
+        "longitude": 14.289904,
+        "latitude": 46.172527
+    },
+    {
+        "stationId": 4400,
+        "river": "Kamniška Bistrica",
+        "measuringPoint": "Kamnik",
+        "longitude": 14.617865,
+        "latitude": 46.224422
+    },
+    {
+        "stationId": 4430,
+        "river": "Kamniška Bistrica",
+        "measuringPoint": "Vir",
+        "longitude": 14.609034,
+        "latitude": 46.148006
+    },
+    {
+        "stationId": 4445,
+        "river": "Kamniška Bistrica",
+        "measuringPoint": "Bišče",
+        "longitude": 14.615813,
+        "latitude": 46.10385
+    },
+    {
+        "stationId": 4480,
+        "river": "Nevljica",
+        "measuringPoint": "Nevlje",
+        "longitude": 14.629643,
+        "latitude": 46.2332
+    },
+    {
+        "stationId": 4515,
+        "river": "Rača",
+        "measuringPoint": "Vir",
+        "longitude": 14.621565,
+        "latitude": 46.14432
+    },
+    {
+        "stationId": 4520,
+        "river": "Rača",
+        "measuringPoint": "Podrečje",
+        "longitude": 14.614058,
+        "latitude": 46.142365
+    },
+    {
+        "stationId": 4570,
+        "river": "Pšata",
+        "measuringPoint": "Topole",
+        "longitude": 14.567374,
+        "latitude": 46.17405
+    },
+    {
+        "stationId": 4575,
+        "river": "Pšata",
+        "measuringPoint": "Loka",
+        "longitude": 14.564945,
+        "latitude": 46.14374
+    },
+    {
+        "stationId": 4626,
+        "river": "Medija",
+        "measuringPoint": "Zagorje",
+        "longitude": 15.0011,
+        "latitude": 46.12788
+    },
+    {
+        "stationId": 4650,
+        "river": "Sopota",
+        "measuringPoint": "Žebnik",
+        "longitude": 15.139637,
+        "latitude": 46.063293
+    },
+    {
+        "stationId": 4671,
+        "river": "Mirna",
+        "measuringPoint": "Martinja vas",
+        "longitude": 15.142191,
+        "latitude": 45.960274
+    },
+    {
+        "stationId": 4695,
+        "river": "Mirna",
+        "measuringPoint": "Jelovec",
+        "longitude": 15.235058,
+        "latitude": 45.9889
+    },
+    {
+        "stationId": 4706,
+        "river": "Sevnična",
+        "measuringPoint": "Metni Vrh",
+        "longitude": 15.302558,
+        "latitude": 46.026028
+    },
+    {
+        "stationId": 4710,
+        "river": "Sotla",
+        "measuringPoint": "Rogatec",
+        "longitude": 15.704632,
+        "latitude": 46.223377
+    },
+    {
+        "stationId": 4750,
+        "river": "Sotla",
+        "measuringPoint": "Rakovec",
+        "longitude": 15.709139,
+        "latitude": 45.921177
+    },
+    {
+        "stationId": 4770,
+        "river": "Mestinjščica",
+        "measuringPoint": "Sodna vas",
+        "longitude": 15.606055,
+        "latitude": 46.173153
+    },
+    {
+        "stationId": 4791,
+        "river": "Bistrica",
+        "measuringPoint": "Zagaj",
+        "longitude": 15.656321,
+        "latitude": 46.04858
+    },
+    {
+        "stationId": 4820,
+        "river": "Kolpa",
+        "measuringPoint": "Petrina",
+        "longitude": 14.856504,
+        "latitude": 45.464123
+    },
+    {
+        "stationId": 4828,
+        "river": "Kolpa",
+        "measuringPoint": "Sodevci",
+        "longitude": 15.080346,
+        "latitude": 45.48492
+    },
+    {
+        "stationId": 4860,
+        "river": "Kolpa",
+        "measuringPoint": "Metlika",
+        "longitude": 15.327746,
+        "latitude": 45.635063
+    },
+    {
+        "stationId": 4960,
+        "river": "Rinža",
+        "measuringPoint": "Livold",
+        "longitude": 14.89334,
+        "latitude": 45.60512
+    },
+    {
+        "stationId": 4969,
+        "river": "Lahinja",
+        "measuringPoint": "Gradac",
+        "longitude": 15.249964,
+        "latitude": 45.613743
+    },
+    {
+        "stationId": 5030,
+        "river": "Ljubljanica",
+        "measuringPoint": "Vrhnika",
+        "longitude": 14.304774,
+        "latitude": 45.966534
+    },
+    {
+        "stationId": 5040,
+        "river": "Ljubljanica",
+        "measuringPoint": "Kamin",
+        "longitude": 14.363757,
+        "latitude": 45.965717
+    },
+    {
+        "stationId": 5078,
+        "river": "Ljubljanica",
+        "measuringPoint": "Moste",
+        "longitude": 14.54917,
+        "latitude": 46.05572
+    },
+    {
+        "stationId": 5240,
+        "river": "Ljubija",
+        "measuringPoint": "Verd",
+        "longitude": 14.313349,
+        "latitude": 45.95766
+    },
+    {
+        "stationId": 5270,
+        "river": "Bistra",
+        "measuringPoint": "Bistra",
+        "longitude": 14.344004,
+        "latitude": 45.950073
+    },
+    {
+        "stationId": 5330,
+        "river": "Borovniščica",
+        "measuringPoint": "Borovnica",
+        "longitude": 14.374439,
+        "latitude": 45.9166
+    },
+    {
+        "stationId": 5425,
+        "river": "Iška",
+        "measuringPoint": "Iška vas",
+        "longitude": 14.519376,
+        "latitude": 45.936504
+    },
+    {
+        "stationId": 5440,
+        "river": "Ižica",
+        "measuringPoint": "Ig",
+        "longitude": 14.539321,
+        "latitude": 45.957733
+    },
+    {
+        "stationId": 5479,
+        "river": "Gradaščica",
+        "measuringPoint": "Bokalce",
+        "longitude": 14.451169,
+        "latitude": 46.045513
+    },
+    {
+        "stationId": 5500,
+        "river": "Gradaščica",
+        "measuringPoint": "Dvor",
+        "longitude": 14.349653,
+        "latitude": 46.06259
+    },
+    {
+        "stationId": 5540,
+        "river": "Šujica",
+        "measuringPoint": "Razori",
+        "longitude": 14.442455,
+        "latitude": 46.048405
+    },
+    {
+        "stationId": 5670,
+        "river": "Stržen",
+        "measuringPoint": "Gorenje Jezero",
+        "longitude": 14.409744,
+        "latitude": 45.728607
+    },
+    {
+        "stationId": 5680,
+        "river": "Stržen",
+        "measuringPoint": "Dolenje Jezero",
+        "longitude": 14.366047,
+        "latitude": 45.765747
+    },
+    {
+        "stationId": 5770,
+        "river": "Cerkniščica",
+        "measuringPoint": "Cerknica",
+        "longitude": 14.369442,
+        "latitude": 45.794178
+    },
+    {
+        "stationId": 5800,
+        "river": "Pivka",
+        "measuringPoint": "Prestranek",
+        "longitude": 14.191382,
+        "latitude": 45.731052
+    },
+    {
+        "stationId": 5820,
+        "river": "Pivka",
+        "measuringPoint": "Postojnska jama",
+        "longitude": 14.207935,
+        "latitude": 45.782715
+    },
+    {
+        "stationId": 5840,
+        "river": "Nanoščica",
+        "measuringPoint": "Mali Otok",
+        "longitude": 14.184997,
+        "latitude": 45.780422
+    },
+    {
+        "stationId": 5880,
+        "river": "Unica",
+        "measuringPoint": "Hasberg",
+        "longitude": 14.268645,
+        "latitude": 45.828796
+    },
+    {
+        "stationId": 5910,
+        "river": "Malenščica",
+        "measuringPoint": "Malni",
+        "longitude": 14.259811,
+        "latitude": 45.823242
+    },
+    {
+        "stationId": 5940,
+        "river": "Logaščica",
+        "measuringPoint": "Logatec",
+        "longitude": 14.20937,
+        "latitude": 45.911266
+    },
+    {
+        "stationId": 6020,
+        "river": "Savinja",
+        "measuringPoint": "Solčava",
+        "longitude": 14.697937,
+        "latitude": 46.420013
+    },
+    {
+        "stationId": 6060,
+        "river": "Savinja",
+        "measuringPoint": "Nazarje",
+        "longitude": 14.957271,
+        "latitude": 46.321606
+    },
+    {
+        "stationId": 6068,
+        "river": "Savinja",
+        "measuringPoint": "Letuš",
+        "longitude": 15.009222,
+        "latitude": 46.32656
+    },
+    {
+        "stationId": 6120,
+        "river": "Savinja",
+        "measuringPoint": "Medlog",
+        "longitude": 15.225234,
+        "latitude": 46.233524
+    },
+    {
+        "stationId": 6140,
+        "river": "Savinja",
+        "measuringPoint": "Celje",
+        "longitude": 15.260021,
+        "latitude": 46.228065
+    },
+    {
+        "stationId": 6200,
+        "river": "Savinja",
+        "measuringPoint": "Laško",
+        "longitude": 15.238377,
+        "latitude": 46.154266
+    },
+    {
+        "stationId": 6210,
+        "river": "Savinja",
+        "measuringPoint": "Veliko Širje",
+        "longitude": 15.197162,
+        "latitude": 46.09232
+    },
+    {
+        "stationId": 6220,
+        "river": "Lučnica",
+        "measuringPoint": "Luče",
+        "longitude": 14.750682,
+        "latitude": 46.354607
+    },
+    {
+        "stationId": 6240,
+        "river": "Dreta",
+        "measuringPoint": "Kraše",
+        "longitude": 14.904955,
+        "latitude": 46.284996
+    },
+    {
+        "stationId": 6280,
+        "river": "Paka",
+        "measuringPoint": "Velenje",
+        "longitude": 15.123149,
+        "latitude": 46.36213
+    },
+    {
+        "stationId": 6300,
+        "river": "Paka",
+        "measuringPoint": "Šoštanj",
+        "longitude": 15.053198,
+        "latitude": 46.376095
+    },
+    {
+        "stationId": 6340,
+        "river": "Paka",
+        "measuringPoint": "Rečica",
+        "longitude": 15.043145,
+        "latitude": 46.321423
+    },
+    {
+        "stationId": 6415,
+        "river": "Velunja",
+        "measuringPoint": "Gaberke",
+        "longitude": 15.082749,
+        "latitude": 46.393406
+    },
+    {
+        "stationId": 6550,
+        "river": "Bolska",
+        "measuringPoint": "Dolenja vas",
+        "longitude": 15.09769,
+        "latitude": 46.239532
+    },
+    {
+        "stationId": 6630,
+        "river": "Ložnica",
+        "measuringPoint": "Levec",
+        "longitude": 15.224967,
+        "latitude": 46.244186
+    },
+    {
+        "stationId": 6691,
+        "river": "Voglajna",
+        "measuringPoint": "Črnolica",
+        "longitude": 15.427647,
+        "latitude": 46.2001
+    },
+    {
+        "stationId": 6720,
+        "river": "Voglajna",
+        "measuringPoint": "Celje",
+        "longitude": 15.288053,
+        "latitude": 46.232338
+    },
+    {
+        "stationId": 6770,
+        "river": "Hudinja",
+        "measuringPoint": "Polže",
+        "longitude": 15.284094,
+        "latitude": 46.314484
+    },
+    {
+        "stationId": 6790,
+        "river": "Hudinja",
+        "measuringPoint": "Škofja vas",
+        "longitude": 15.291532,
+        "latitude": 46.265003
+    },
+    {
+        "stationId": 6835,
+        "river": "Gračnica",
+        "measuringPoint": "Vodiško",
+        "longitude": 15.238472,
+        "latitude": 46.10725
+    },
+    {
+        "stationId": 7029,
+        "river": "Krka",
+        "measuringPoint": "Podbukovje",
+        "longitude": 14.789738,
+        "latitude": 45.87703
+    },
+    {
+        "stationId": 7060,
+        "river": "Krka",
+        "measuringPoint": "Soteska",
+        "longitude": 15.023973,
+        "latitude": 45.77967
+    },
+    {
+        "stationId": 7110,
+        "river": "Krka",
+        "measuringPoint": "Gorenja Gomila",
+        "longitude": 15.290363,
+        "latitude": 45.86777
+    },
+    {
+        "stationId": 7160,
+        "river": "Krka",
+        "measuringPoint": "Podbočje",
+        "longitude": 15.460184,
+        "latitude": 45.865093
+    },
+    {
+        "stationId": 7200,
+        "river": "Grosupeljščica",
+        "measuringPoint": "Mlačevo",
+        "longitude": 14.677928,
+        "latitude": 45.9405
+    },
+    {
+        "stationId": 7220,
+        "river": "Rašica",
+        "measuringPoint": "Rašica",
+        "longitude": 14.633443,
+        "latitude": 45.852077
+    },
+    {
+        "stationId": 7235,
+        "river": "Višnjica",
+        "measuringPoint": "Ivančna Gorica",
+        "longitude": 14.805146,
+        "latitude": 45.93642
+    },
+    {
+        "stationId": 7272,
+        "river": "Radešca",
+        "measuringPoint": "Meniška vas",
+        "longitude": 15.040254,
+        "latitude": 45.759876
+    },
+    {
+        "stationId": 7308,
+        "river": "Temenica",
+        "measuringPoint": "Rožni Vrh",
+        "longitude": 14.994985,
+        "latitude": 45.907917
+    },
+    {
+        "stationId": 7340,
+        "river": "Prečna",
+        "measuringPoint": "Prečna",
+        "longitude": 15.113508,
+        "latitude": 45.815002
+    },
+    {
+        "stationId": 7380,
+        "river": "Radulja",
+        "measuringPoint": "Škocjan",
+        "longitude": 15.296682,
+        "latitude": 45.907803
+    },
+    {
+        "stationId": 7440,
+        "river": "Bistrica",
+        "measuringPoint": "Sodražica",
+        "longitude": 14.642408,
+        "latitude": 45.763268
+    },
+    {
+        "stationId": 7488,
+        "river": "Ribnica",
+        "measuringPoint": "Prigorica",
+        "longitude": 14.742466,
+        "latitude": 45.7126
+    },
+    {
+        "stationId": 7498,
+        "river": "Rakitnica",
+        "measuringPoint": "Blate",
+        "longitude": 14.749649,
+        "latitude": 45.694855
+    },
+    {
+        "stationId": 8031,
+        "river": "Soča",
+        "measuringPoint": "Kršovec",
+        "longitude": 13.603292,
+        "latitude": 46.337334
+    },
+    {
+        "stationId": 8060,
+        "river": "Soča",
+        "measuringPoint": "Log Čezsoški",
+        "longitude": 13.499251,
+        "latitude": 46.31518
+    },
+    {
+        "stationId": 8080,
+        "river": "Soča",
+        "measuringPoint": "Kobarid",
+        "longitude": 13.591029,
+        "latitude": 46.24771
+    },
+    {
+        "stationId": 8180,
+        "river": "Soča",
+        "measuringPoint": "Solkan",
+        "longitude": 13.659889,
+        "latitude": 45.981895
+    },
+    {
+        "stationId": 8270,
+        "river": "Učja",
+        "measuringPoint": "Žaga",
+        "longitude": 13.482378,
+        "latitude": 46.310146
+    },
+    {
+        "stationId": 8332,
+        "river": "Tolminka",
+        "measuringPoint": "Tolmin",
+        "longitude": 13.745198,
+        "latitude": 46.18437
+    },
+    {
+        "stationId": 8350,
+        "river": "Idrijca",
+        "measuringPoint": "Podroteja",
+        "longitude": 14.035385,
+        "latitude": 45.987076
+    },
+    {
+        "stationId": 8351,
+        "river": "Idrijca-kanal",
+        "measuringPoint": "Podroteja",
+        "longitude": 14.034904,
+        "latitude": 45.98725
+    },
+    {
+        "stationId": 8450,
+        "river": "Idrijca",
+        "measuringPoint": "Hotešk",
+        "longitude": 13.798362,
+        "latitude": 46.12868
+    },
+    {
+        "stationId": 8454,
+        "river": "Cerknica",
+        "measuringPoint": "Cerkno",
+        "longitude": 13.983514,
+        "latitude": 46.121696
+    },
+    {
+        "stationId": 8478,
+        "river": "Trebuša",
+        "measuringPoint": "Dolenja Trebuša",
+        "longitude": 13.836737,
+        "latitude": 46.094227
+    },
+    {
+        "stationId": 8500,
+        "river": "Bača",
+        "measuringPoint": "Bača pri Modreju",
+        "longitude": 13.780198,
+        "latitude": 46.155945
+    },
+    {
+        "stationId": 8545,
+        "river": "Koren",
+        "measuringPoint": "Nova Gorica",
+        "longitude": 13.638662,
+        "latitude": 45.95317
+    },
+    {
+        "stationId": 8561,
+        "river": "Vipava",
+        "measuringPoint": "Vipava",
+        "longitude": 13.965745,
+        "latitude": 45.84244
+    },
+    {
+        "stationId": 8565,
+        "river": "Vipava",
+        "measuringPoint": "Dolenje",
+        "longitude": 13.905993,
+        "latitude": 45.866543
+    },
+    {
+        "stationId": 8591,
+        "river": "Vipava",
+        "measuringPoint": "Zalošče",
+        "longitude": 13.74809,
+        "latitude": 45.888496
+    },
+    {
+        "stationId": 8601,
+        "river": "Vipava",
+        "measuringPoint": "Miren",
+        "longitude": 13.612571,
+        "latitude": 45.8944
+    },
+    {
+        "stationId": 8610,
+        "river": "Močilnik",
+        "measuringPoint": "Podnanos",
+        "longitude": 13.978341,
+        "latitude": 45.79936
+    },
+    {
+        "stationId": 8630,
+        "river": "Hubelj",
+        "measuringPoint": "Ajdovščina",
+        "longitude": 13.909731,
+        "latitude": 45.89405
+    },
+    {
+        "stationId": 8640,
+        "river": "Branica",
+        "measuringPoint": "Branik",
+        "longitude": 13.808814,
+        "latitude": 45.85154
+    },
+    {
+        "stationId": 8660,
+        "river": "Lijak",
+        "measuringPoint": "Volčja Draga",
+        "longitude": 13.68791,
+        "latitude": 45.899998
+    },
+    {
+        "stationId": 8670,
+        "river": "Vogršček",
+        "measuringPoint": "Bezovljak",
+        "longitude": 13.726277,
+        "latitude": 45.905228
+    },
+    {
+        "stationId": 8680,
+        "river": "Reka",
+        "measuringPoint": "Neblo",
+        "longitude": 13.49456,
+        "latitude": 46.000046
+    },
+    {
+        "stationId": 8700,
+        "river": "Kožbanjšček",
+        "measuringPoint": "Neblo",
+        "longitude": 13.509068,
+        "latitude": 46.003124
+    },
+    {
+        "stationId": 8710,
+        "river": "Nadiža",
+        "measuringPoint": "Potoki",
+        "longitude": 13.505872,
+        "latitude": 46.248898
+    },
+    {
+        "stationId": 9015,
+        "river": "Reka",
+        "measuringPoint": "Trpčane",
+        "longitude": 14.327693,
+        "latitude": 45.52533
+    },
+    {
+        "stationId": 9030,
+        "river": "Reka",
+        "measuringPoint": "Trnovo",
+        "longitude": 14.231142,
+        "latitude": 45.573418
+    },
+    {
+        "stationId": 9050,
+        "river": "Reka",
+        "measuringPoint": "Cerkvenikov mlin",
+        "longitude": 14.065534,
+        "latitude": 45.655167
+    },
+    {
+        "stationId": 9100,
+        "river": "Bistrica",
+        "measuringPoint": "Ilirska Bistrica",
+        "longitude": 14.246457,
+        "latitude": 45.564655
+    },
+    {
+        "stationId": 9108,
+        "river": "Molja",
+        "measuringPoint": "Zarečica",
+        "longitude": 14.233849,
+        "latitude": 45.55152
+    },
+    {
+        "stationId": 9210,
+        "river": "Rižana",
+        "measuringPoint": "Kubed",
+        "longitude": 13.880788,
+        "latitude": 45.532913
+    },
+    {
+        "stationId": 9240,
+        "river": "Rižana",
+        "measuringPoint": "Dekani",
+        "longitude": 13.817906,
+        "latitude": 45.543186
+    },
+    {
+        "stationId": 9275,
+        "river": "Badaševica",
+        "measuringPoint": "Šalara",
+        "longitude": 13.751013,
+        "latitude": 45.525307
+    },
+    {
+        "stationId": 9280,
+        "river": "Drnica",
+        "measuringPoint": "Pišine",
+        "longitude": 13.643463,
+        "latitude": 45.466248
+    },
+    {
+        "stationId": 9300,
+        "river": "Dragonja",
+        "measuringPoint": "Podkaštel",
+        "longitude": 13.65905,
+        "latitude": 45.45293
+    },
+    {
+        "stationId": 9350,
+        "river": "Jadransko morje",
+        "measuringPoint": "Koper - kapitanija",
+        "longitude": 13.72915,
+        "latitude": 45.54839
+    },
+    {
+        "stationId": 9400,
+        "river": "Jadransko morje",
+        "measuringPoint": "OB Piran (NIB)",
+        "longitude": 13.550017,
+        "latitude": 45.551117
+    },
+    {
+        "stationId": 9410,
+        "river": "Jadransko morje",
+        "measuringPoint": "Debeli Rtič (Zora)",
+        "longitude": 13.671665,
+        "latitude": 45.603336
+    }
+]

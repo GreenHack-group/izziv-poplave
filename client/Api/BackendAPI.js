@@ -1,4 +1,5 @@
 import { create } from 'apisauce'
+const mock = require('./mock-data.json')
 
 const backendAPI = create({
     baseURL: 'https://pozivnikapi20211106154402-apim.azure-api.net/api',

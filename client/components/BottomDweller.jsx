@@ -23,7 +23,7 @@ export const BottomDweller = (props) => {
 
 const styles = StyleSheet.create({
     dwellerContainer: {
-        padding: theme.LAYOUT.paddingMedium,
+        padding: theme.LAYOUT.paddingSmall, // popravil na small da je izgled ok na iphonu
     },
 })
 

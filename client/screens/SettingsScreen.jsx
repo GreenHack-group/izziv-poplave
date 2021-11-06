@@ -16,4 +16,5 @@ const styles = StyleSheet.create({
         fontWeight: theme.FONTS.BOLD,
         padding: theme.LAYOUT.paddingMedium,
     },
+    color: {backgroundColor: theme.COLORS.softBlue}
 })
