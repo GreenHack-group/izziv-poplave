@@ -12,8 +12,8 @@ export const Legend = () => {
     if (!legendOpen) {
         return (
             <Pressable style={styles.legendContainer} onPress={toggleLegend}>
-                <View style={styles.legendEntry}>
-                    <NormalText>Odpri legendo</NormalText>
+                <View style={styles.openLegend}>
+                    <SmallText>Odpri legendo</SmallText>
                 </View>
             </Pressable>
         )
@@ -53,5 +53,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: theme.LAYOUT.paddingSmall,
+    },
+    openLegend: {
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 })
