@@ -6,6 +6,7 @@ import MapView from 'react-native-maps'
 import { StationProps } from '../../shared/types'
 import { PozivkoMarker } from './Marker'
 import mapStyle from '../../assets/mapStyles.json'
+import { Legend } from './Legend'
 
 const INITIAL_REGION_SLOVENIA = {
     latitude: 46.420329292548146,
@@ -61,6 +62,7 @@ export const Map = (props) => {
             >
                 {!props.isLoading && props.markers.map(renderMarker)}
             </MapView>
+            <Legend />
         </View>
     )
 }

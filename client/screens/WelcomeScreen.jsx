@@ -4,7 +4,6 @@ import { Pressable, View, Text, StyleSheet, Dimensions } from 'react-native'
 import { Container } from '../components/Container'
 import theme from '../shared/theme'
 import { NavigationDots } from '../components/NavigationDots'
-import { NotificationLargeIcon } from '../components/Icons/NotificationLargeIcon'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PozivkoIcon from '../components/Icons/PozivkoIcon'
 import { DefaultButton } from '../components/DefaultButton'
@@ -126,25 +125,19 @@ const LocationPermissionsScreen = (props) => {
 
 const YouAreAllSetupScreen = (props) => {
     return (
-        <View
-            style={{
-                width: '100%',
-                height: '100%',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-end',
-                flex: 1,
-            }}
-        >
+        <View style={{ alignItems: 'center', width: '100%', flex: 1 }}>
             <WelcomScreenAnimation
+                style={{
+                    height: Dimensions.get('window').height * 0.6,
+                    marginLeft: 30,
+                }}
                 animation={require('../assets/animations/all_set.json')}
                 onAnimationFinished={props.onClickNext}
-                style={{
-                    height: Dimensions.get('window').height * 0.2,
-                    width: '50%',
-                    flex: 1,
-                    marginLeft: '10%',
-                }}
             />
+
+            <View>
+                <HeaderText textAlign="center">Vse je pripravljeno!</HeaderText>
+            </View>
         </View>
     )
 }
