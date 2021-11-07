@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     container: {
         paddingVertical: theme.LAYOUT.paddingLarge,
         paddingHorizontal: theme.LAYOUT.paddingLarge,
+        paddingVertical: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
         marginBottom: 5,
         marginVertical: 5,
         color: theme.COLORS.black,
-        flex: 0.4,
+        flex: 0.5,
         borderRadius: 20,
     },
 })

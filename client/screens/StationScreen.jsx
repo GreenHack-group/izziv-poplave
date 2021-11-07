@@ -14,6 +14,7 @@ import { RiverIcon } from '../components/Icons/RiverIcon'
 import { WavesIcon } from '../components/Icons/WavesIcon'
 import moment from 'moment'
 import { StationScreenAnimations } from '../components/StationScreenAnimations'
+import { StationScreenCharts } from '../components/StationScreenCharts'
 
 /**
  * Screen to display station info and more
@@ -50,7 +51,7 @@ export const StationScreen = (props) => {
     }
 
     const getParsedDate = (date) => {
-        const formatted = moment(date).format('D.M.YYYY | H.mm')
+        const formatted = moment(date).format('D.MMMM YYYY | H.mm')
         return formatted
     }
 
@@ -197,9 +198,7 @@ export const StationScreen = (props) => {
                 </StationPropertiesWidgetLarge>
 
                 <StationPropertiesWidgetGraf>
-                    <Text style={{ justifyContent: 'flex-end' }}>
-                        GRAFI TO BE
-                    </Text>
+                    <StationScreenCharts />
                 </StationPropertiesWidgetGraf>
             </View>
         </StationPropertiesContainer>
