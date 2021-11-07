@@ -64,27 +64,19 @@ export const StationScreenAnimations = ({ data }) => {
                 flex: 1,
             }}
         >
-            {vodostaj !== null ? (
+            {vodostaj !== null && (
                 <AnimationContainer
                     level={vodostaj}
                     title={'Stopnja vodostaja:'}
                     nivo={waterLevelGroup}
                 />
-            ) : (
-                <SmallText>
-                    Za izbrano postajo ni informacije o nivoju vodostaja
-                </SmallText>
             )}
-            {pretok !== null ? (
+            {pretok !== null && (
                 <AnimationContainer
                     level={pretok}
                     title={'Stopnja pretoka:'}
                     nivo={waterFlowGroup}
                 />
-            ) : (
-                <SmallText>
-                    Za izbrano postajo ni informacije o nivoju pretoka
-                </SmallText>
             )}
         </View>
     )

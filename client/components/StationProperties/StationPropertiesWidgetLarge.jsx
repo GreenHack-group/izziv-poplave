@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     container: {
         paddingVertical: theme.LAYOUT.paddingLarge,
         paddingHorizontal: theme.LAYOUT.paddingLarge,
-        paddingVertical: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
         marginBottom: 5,
         marginVertical: 5,
