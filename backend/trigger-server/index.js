@@ -2,7 +2,7 @@
 const express = require("express");
 const cron = require("node-cron");
 const axios = require("axios");
-const Expo = require("expo-server-sdk");
+const { Expo } = require("expo-server-sdk");
 const app = express();
 const port = 4000;
 
