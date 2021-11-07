@@ -56,7 +56,7 @@ cron.schedule("*/10 * * * *", async function () {
   console.log("running every 10 min task seconds");
   await lastDataTrigger();
   const notifications = await fetchNotifications();
-  if (notifications.tokens && notifications.Tokens.length > 0) {
+  if (notifications.Tokens && notifications.Tokens.length > 0) {
     createMessages(notifications);
   }
 });
