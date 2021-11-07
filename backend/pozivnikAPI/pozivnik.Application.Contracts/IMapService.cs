@@ -17,6 +17,9 @@ namespace pozivnik.Application.Contracts
         public List<MeasurementDto> GetGraphData(string stationId);
 
         public Task<string> PostDataInDatabase();
+
         public double CalculateDistance(UserDto user);
+
+        public string PushNotification();
     }
 }

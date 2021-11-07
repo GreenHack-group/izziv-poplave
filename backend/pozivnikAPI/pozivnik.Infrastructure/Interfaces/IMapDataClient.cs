@@ -17,6 +17,7 @@ namespace pozivnik.Infrastructure.Interfaces
         public List<MeasurementDto> FetchGraphData(string stationId);
         public Task<string> InsertDataInDatabase();
         public double ManageUser(UserDto user); //fetch + operacija + insert
+        public string PushNotification();
 
     }
 }

@@ -303,5 +303,11 @@ namespace pozivnik.Infrastructure.Implementation
             
             return 0;
         }
+        public string PushNotification()
+        {   
+            var conn = _connectionDB.getDB();
+
+            return "meow meow";
+        }
     }
 }

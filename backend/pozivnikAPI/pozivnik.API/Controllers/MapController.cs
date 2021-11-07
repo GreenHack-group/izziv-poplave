@@ -59,5 +59,13 @@ namespace pozivnik.API.Controllers
             return response;
         }
 
+        [HttpPost]
+        [Route("notification")]
+        public string sendNotification() 
+        {
+            var response = _mapService.PushNotification();
+            return response;
+        }
+
     }               
 }

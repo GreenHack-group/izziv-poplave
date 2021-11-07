@@ -51,5 +51,11 @@ namespace pozivnik.Application
 
             return response;
         }
+
+        public string PushNotification() 
+        {
+            var response = _mapDataClient.PushNotification();
+            return response;
+        }
     }
 }
