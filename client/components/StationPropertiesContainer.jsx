@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import theme from '../shared/theme'
 
 /**
@@ -12,7 +12,7 @@ import theme from '../shared/theme'
  * @returns
  */
 export const StationPropertiesContainer = (props) => {
-    return <View style={styles.container}>{props.children}</View>
+    return <ScrollView style={styles.container}>{props.children}</ScrollView>
 }
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         //paddingVertical: theme.LAYOUT.paddingLarge,
         //paddingBottom: theme.LAYOUT.paddingLarge,
         //paddingHorizontal: theme.LAYOUT.paddingLarge,
-        backgroundColor: theme.COLORS.softBlue,
+        backgroundColor: theme.COLORS.background,
         color: theme.COLORS.black,
         flex: 1,
     },

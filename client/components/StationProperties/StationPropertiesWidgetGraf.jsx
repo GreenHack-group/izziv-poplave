@@ -18,11 +18,11 @@ export const StationPropertiesWidgetGraf = (props) => {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: theme.LAYOUT.paddingLarge,
+        paddingVertical: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
-        marginBottom: 5,
         marginVertical: 5,
         color: theme.COLORS.black,
-        flex: 0.5,
+        flex: 2,
         borderRadius: 20,
     },
 })

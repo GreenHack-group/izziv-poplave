@@ -51,20 +51,24 @@ const styles = StyleSheet.create({
         fontSize: theme.FONTS.SIZE_SM,
         fontWeight: theme.FONTS.NORMAL,
         fontFamily: theme.FONTS.ROBOTO,
+        flexWrap: 'wrap',
     },
     normalText: {
         fontSize: theme.FONTS.SIZE_BASE,
         fontWeight: theme.FONTS.NORMAL,
         fontFamily: theme.FONTS.ROBOTO,
+        flexWrap: 'wrap',
     },
     boldText: {
         fontSize: theme.FONTS.SIZE_BASE,
         fontWeight: theme.FONTS.BOLD,
         fontFamily: theme.FONTS.ROBOTO,
+        flexWrap: 'wrap',
     },
     headerText: {
         fontSize: theme.FONTS.SIZE_XL,
         fontWeight: theme.FONTS.BOLD,
         fontFamily: theme.FONTS.ROBOTO,
+        flexWrap: 'wrap',
     },
 })
