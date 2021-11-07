@@ -317,32 +317,32 @@ namespace pozivnik.Infrastructure.Implementation
             foreach (XmlNode xn in xnList)
             { 
                 int dangerLevel = calculateDangerLevel(xn);
+                string river = xn["reka"].InnerText;
+                string measurePoint = xn["merilno_mesto"].InnerText;
+                var msg = String.Format("{0} pri merilni postaji {1} ima povečano možnost za {2}.", river, measurePoint, dangerLevels.ElementAt(dangerLevel - 1));
+
+                List<string> tokens = new List<string>();
                 if (dangerLevel > 0 /*&& dangerLevel != 4*/) //da testiramo 4 = non-defined
                 {
-                    string river = xn["reka"].InnerText;
-                    string measurePoint = xn["merilno_mesto"].InnerText;
 
                     var conn = _connectionDB.getDB();
                     using var cmd = new MySqlCommand("SELECT token FROM je_v_blizini WHERE sifra_postaja = @stationId", conn);
                     cmd.Parameters.AddWithValue("@stationId", river.ToString());
                     using MySqlDataReader rdr = cmd.ExecuteReader();
 
-                    
-                    var msg = String.Format("{0} pri merilni postaji {1} ima povečano možnost za {2}.", river, measurePoint, dangerLevels.ElementAt(dangerLevel - 1));
                     while (rdr.Read()) 
                     {
                         string token = rdr.GetString(0);
-
-                        PushPackageDto temp = new PushPackageDto
-                        {
-                            Token = token,
-                            Message = msg
-                        };
-
-                        users.Add(temp);
+                        tokens.Add(token);
                     }
 
                 }
+                PushPackageDto temp = new PushPackageDto
+                {
+                    Tokens = tokens,
+                    Message = msg
+                };
+                users.Add(temp);
 
             }
             return users;

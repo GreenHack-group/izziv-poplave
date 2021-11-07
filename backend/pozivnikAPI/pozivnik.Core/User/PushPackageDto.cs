@@ -8,7 +8,7 @@ namespace pozivnik.Core.User
 {
     public class PushPackageDto
     {
-        public string Token { get; set; }
+        public List<string> Tokens { get; set; }
         public string Message { get; set; }
     }
 }

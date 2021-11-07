@@ -52,7 +52,7 @@ namespace pozivnik.Application
             return response;
         }
 
-        public async Task<string> PushNotification() 
+        public async Task<List<PushPackageDto>> PushNotification() 
         {
             var response = await _mapDataClient.PushNotification();
             return response;
