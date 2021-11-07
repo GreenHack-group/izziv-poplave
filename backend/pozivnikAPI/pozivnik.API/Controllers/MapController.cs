@@ -44,8 +44,8 @@ namespace pozivnik.API.Controllers
 
         [HttpPost]
         [Route("lastData")]
-       // [FunctionName("TimerTriggerCSharp")]
-        public async Task<string> PostLastDataEntry(/*[TimerTrigger("* 30 * * * *")] TimerInfo myTime*/) {
+        [FunctionName("PostTrigger")]
+        public async Task<string> PostLastDataEntry([TimerTrigger("* */5 * * * *")] TimerInfo myTime) {
             //Every 30 minutes it posts a data entry 
             var response = await _mapService.PostDataInDatabase();
             return response;
