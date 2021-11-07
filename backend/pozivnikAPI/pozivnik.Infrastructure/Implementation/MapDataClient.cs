@@ -14,6 +14,9 @@ using System.Xml;
 using System.Xml.Serialization;
 using Geolocation;
 using Xamarin.Essentials;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace pozivnik.Infrastructure.Implementation
 {
@@ -188,7 +191,7 @@ namespace pozivnik.Infrastructure.Implementation
             }
             conn.Close();
             //FILL Meritev
-           var node = xnList[0];
+            var node = xnList[0];
             DateTime xmlDate = DateTime.Parse(node["datum"].InnerText); //iz XML
 
             var conn1 = _connectionDB.getDB();
@@ -303,11 +306,46 @@ namespace pozivnik.Infrastructure.Implementation
             
             return 0;
         }
-        public string PushNotification()
-        {   
-            var conn = _connectionDB.getDB();
+        public async Task<List<PushPackageDto>> PushNotification()
+        {
+            var xml = await _connectionXML.getXML();
+            XmlNodeList xnList = xml.SelectNodes("/arsopodatki/postaja");
+            List<string> dangerLevels = new List<string>{"razlivanje", "poplavo", "obsežno poplavo"};
 
-            return "meow meow";
+            List<PushPackageDto> users = new List<PushPackageDto>();
+
+            foreach (XmlNode xn in xnList)
+            { 
+                int dangerLevel = calculateDangerLevel(xn);
+                if (dangerLevel > 0 /*&& dangerLevel != 4*/) //da testiramo 4 = non-defined
+                {
+                    string river = xn["reka"].InnerText;
+                    string measurePoint = xn["merilno_mesto"].InnerText;
+
+                    var conn = _connectionDB.getDB();
+                    using var cmd = new MySqlCommand("SELECT token FROM je_v_blizini WHERE sifra_postaja = @stationId", conn);
+                    cmd.Parameters.AddWithValue("@stationId", river.ToString());
+                    using MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    
+                    var msg = String.Format("{0} pri merilni postaji {1} ima povečano možnost za {2}.", river, measurePoint, dangerLevels.ElementAt(dangerLevel - 1));
+                    while (rdr.Read()) 
+                    {
+                        string token = rdr.GetString(0);
+
+                        PushPackageDto temp = new PushPackageDto
+                        {
+                            Token = token,
+                            Message = msg
+                        };
+
+                        users.Add(temp);
+                    }
+
+                }
+
+            }
+            return users;
         }
     }
 }

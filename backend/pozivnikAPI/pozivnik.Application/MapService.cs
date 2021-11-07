@@ -52,9 +52,9 @@ namespace pozivnik.Application
             return response;
         }
 
-        public string PushNotification() 
+        public async Task<string> PushNotification() 
         {
-            var response = _mapDataClient.PushNotification();
+            var response = await _mapDataClient.PushNotification();
             return response;
         }
     }

@@ -20,6 +20,6 @@ namespace pozivnik.Application.Contracts
 
         public double CalculateDistance(UserDto user);
 
-        public string PushNotification();
+        public Task<List<PushPackageDto>> PushNotification();
     }
 }

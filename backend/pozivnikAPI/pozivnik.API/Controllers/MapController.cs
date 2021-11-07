@@ -61,9 +61,9 @@ namespace pozivnik.API.Controllers
 
         [HttpPost]
         [Route("notification")]
-        public string sendNotification() 
+        public async Task<List<PushPackageDto>> PushNotification() 
         {
-            var response = _mapService.PushNotification();
+            var response = await _mapService.PushNotification();
             return response;
         }
 
