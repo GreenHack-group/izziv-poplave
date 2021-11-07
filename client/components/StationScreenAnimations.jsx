@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import {View, Text, StyleSheet} from 'react-native'
 import { HeaderText, SmallText } from './PozivkoText'
 import {
     WaterFlowAnimation1,
@@ -68,23 +68,23 @@ export const StationScreenAnimations = ({ data }) => {
             {vodostaj !== null ? (
                 <AnimationContainer
                     level={vodostaj}
-                    title={'Nivo vodostaja'}
+                    title={'Stopnja vodostaja:'}
                     nivo={waterLevelGroup}
                 />
             ) : (
                 <SmallText>
-                    Informacije o nivoju vodostaju ni za izbrano postajo
+                    Za izbrano postajo ni informacije o nivoju vodostaja
                 </SmallText>
             )}
             {pretok !== null ? (
                 <AnimationContainer
                     level={pretok}
-                    title={'Nivo pretoka'}
+                    title={'Stopnja pretoka:'}
                     nivo={waterFlowGroup}
                 />
             ) : (
                 <SmallText>
-                    Informacije o nivoju pretoku ni za izbrano postajo
+                    Za izbrano postajo ni informacije o nivoju pretoka
                 </SmallText>
             )}
         </View>
@@ -111,8 +111,11 @@ const AnimationContainer = ({ level, title, nivo }) => {
     return (
         <View>
             <View>
-                <Text>{title}</Text>
-                <Text>{nivo}</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={{color: theme.COLORS.softBlue,}}>{title}</Text>
+                    <Text>{nivo}</Text>
+                </View>
+
             </View>
             <View
                 style={{
@@ -125,4 +128,15 @@ const AnimationContainer = ({ level, title, nivo }) => {
             </View>
         </View>
     )
+
 }
+const styles = StyleSheet.create({
+
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+})
+
+

@@ -17,6 +17,7 @@ export const StationPropertiesWidgetLarge = (props) => {
 
 const styles = StyleSheet.create({
     container: {
+        paddingVertical: theme.LAYOUT.paddingLarge,
         paddingHorizontal: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
         marginBottom: 5,

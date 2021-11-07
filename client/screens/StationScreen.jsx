@@ -50,7 +50,7 @@ export const StationScreen = (props) => {
     }
 
     const getParsedDate = (date) => {
-        const formatted = moment(date).format('D.MMMM.YYYY, H.mm')
+        const formatted = moment(date).format('D.M.YYYY | H.mm')
         return formatted
     }
 
