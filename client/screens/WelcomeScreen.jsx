@@ -9,6 +9,10 @@ import PozivkoIcon from '../components/Icons/PozivkoIcon'
 import { DefaultButton } from '../components/DefaultButton'
 import { SmallText, HeaderText } from '../components/PozivkoText'
 import { WelcomScreenAnimation } from '../components/Animations/NotifcationsAnimation'
+import Constants from 'expo-constants'
+import * as Notifications from 'expo-notifications'
+import * as Location from 'expo-location'
+import { addDeviceNotificationSubscription } from '../Api/BackendAPI'
 
 const SUB_SCREEN = {
     NOTIFICATIONS: 1,
@@ -24,18 +28,41 @@ const SUB_SCREEN = {
  */
 export const WelcomeScreen = (props) => {
     const [subScreen, setSubScreen] = useState(SUB_SCREEN.NOTIFICATIONS)
+    const [pushToken, setPushToken] = useState(null)
+    const [location, setLocation] = useState(null)
 
     const renderSubScreen = () => {
         const navigateNext = () => setSubScreen(subScreen + 1)
         switch (subScreen) {
             case SUB_SCREEN.NOTIFICATIONS:
                 return (
-                    <NotificationPermissionScreen onClickNext={navigateNext} />
+                    <NotificationPermissionScreen
+                        onClickNext={navigateNext}
+                        setToken={(token) => setPushToken(token)}
+                    />
                 )
             case SUB_SCREEN.LOCATION:
-                return <LocationPermissionsScreen onClickNext={navigateNext} />
+                return (
+                    <LocationPermissionsScreen
+                        onClickNext={navigateNext}
+                        setLocation={(location) => setLocation(location)}
+                    />
+                )
             case SUB_SCREEN.COMPLETE:
-                const finishSetup = () => props.navigation.navigate('Home')
+                const finishSetup = async () => {
+                    if (null !== location && null !== pushToken) {
+                        const { latitude, longitude } = location.coords
+                        const payload = {
+                            token: pushToken,
+                            location: {
+                                latitude,
+                                longitude,
+                            },
+                        }
+                        await addDeviceNotificationSubscription(payload)
+                    }
+                    props.navigation.navigate('Home')
+                }
                 return <YouAreAllSetupScreen onClickNext={finishSetup} />
         }
     }
@@ -54,6 +81,36 @@ export const WelcomeScreen = (props) => {
 }
 
 const NotificationPermissionScreen = (props) => {
+    const registerForPushNotificationsAsync = async () => {
+        if (Constants.isDevice) {
+            const { status: existingStatus } =
+                await Notifications.getPermissionsAsync()
+            let finalStatus = existingStatus
+            if (existingStatus !== 'granted') {
+                const { status } = await Notifications.requestPermissionsAsync()
+                finalStatus = status
+            }
+            if (finalStatus !== 'granted') {
+                alert('Failed to get push token for push notification!')
+                return
+            }
+            const token = (await Notifications.getExpoPushTokenAsync()).data
+            props.setToken(token)
+            props.onClickNext()
+        } else {
+            alert('Must use physical device for Push Notifications')
+        }
+
+        if (Platform.OS === 'android') {
+            Notifications.setNotificationChannelAsync('default', {
+                name: 'default',
+                importance: Notifications.AndroidImportance.MAX,
+                vibrationPattern: [0, 250, 250, 250],
+                lightColor: '#FF231F7C',
+            })
+        }
+    }
+
     return (
         <View style={{ alignItems: 'center', width: '100%', flex: 1 }}>
             <WelcomScreenAnimation
@@ -78,7 +135,10 @@ const NotificationPermissionScreen = (props) => {
                     </SmallText>
                 </View>
                 <View style={{ marginTop: theme.LAYOUT.paddingLarge * 2 }} />
-                <DefaultButton title={'Dovoli'} onPress={props.onClickNext} />
+                <DefaultButton
+                    title={'Dovoli'}
+                    onPress={registerForPushNotificationsAsync}
+                />
                 <View style={{ marginTop: theme.LAYOUT.paddingLarge }} />
                 <Pressable>
                     <Text style={styles.denyAccess}>Zavrni dostop</Text>
@@ -89,6 +149,18 @@ const NotificationPermissionScreen = (props) => {
 }
 
 const LocationPermissionsScreen = (props) => {
+    const shareCurrentLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync()
+        if (status !== 'granted') {
+            setErrorMsg('Permission to access location was denied')
+            return
+        }
+
+        let location = await Location.getCurrentPositionAsync({})
+        props.setLocation(location)
+        props.onClickNext()
+    }
+
     return (
         <View style={{ alignItems: 'center', width: '100%', flex: 1 }}>
             <WelcomScreenAnimation
@@ -113,7 +185,10 @@ const LocationPermissionsScreen = (props) => {
                     </SmallText>
                 </View>
                 <View style={{ marginTop: theme.LAYOUT.paddingLarge * 2 }} />
-                <DefaultButton title={'Dovoli'} onPress={props.onClickNext} />
+                <DefaultButton
+                    title={'Dovoli'}
+                    onPress={shareCurrentLocation}
+                />
                 <View style={{ marginTop: theme.LAYOUT.paddingLarge }} />
                 <Pressable>
                     <Text style={styles.denyAccess}>Zavrni dostop</Text>

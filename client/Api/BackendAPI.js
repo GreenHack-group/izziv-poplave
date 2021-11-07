@@ -25,3 +25,7 @@ export const fetchChartDataByStationId = async (stationId) => {
     const data = await response.data
     return data
 }
+
+export const addDeviceNotificationSubscription = async (payload) => {
+    await backendAPI.post('/addUser', payload)
+}
