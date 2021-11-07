@@ -14,38 +14,41 @@ import { StationListScreen } from './screens/StationListScreen'
 import OnStartAnimation from './components/Animations/OnStartAnimation'
 import { StationsProvider } from './context/StationsContext'
 import PozivkoWhite from './components/Icons/PozivkoWhite'
+import NotificationsListener from './context/NotificationsListener'
 
 const Stack = createNativeStackNavigator()
 const Tab = createMaterialTopTabNavigator()
 
 const HomeTabs = () => (
-    <StationsProvider>
-        <Tab.Navigator
-            screenOptions={{
-                tabBarStyle: {
-                    backgroundColor: theme.COLORS.primary,
-                    paddingBottom: theme.LAYOUT.paddingSmall,
-                },
-                tabBarActiveTintColor: theme.COLORS.white,
-                tabBarInactiveTintColor: theme.COLORS.softBlue,
-                tabBarIndicatorStyle: {
-                    backgroundColor: theme.COLORS.white,
-                    height: 5,
-                },
-            }}
-        >
-            <Tab.Screen
-                name="Stations"
-                component={StationListScreen}
-                options={{ title: 'Seznam postaj' }}
-            />
-            <Tab.Screen
-                name="Map"
-                component={MapScreen}
-                options={{ title: 'Zemljevid' }}
-            />
-        </Tab.Navigator>
-    </StationsProvider>
+    <NotificationsListener>
+        <StationsProvider>
+            <Tab.Navigator
+                screenOptions={{
+                    tabBarStyle: {
+                        backgroundColor: theme.COLORS.primary,
+                        paddingBottom: theme.LAYOUT.paddingSmall,
+                    },
+                    tabBarActiveTintColor: theme.COLORS.white,
+                    tabBarInactiveTintColor: theme.COLORS.softBlue,
+                    tabBarIndicatorStyle: {
+                        backgroundColor: theme.COLORS.white,
+                        height: 5,
+                    },
+                }}
+            >
+                <Tab.Screen
+                    name="Stations"
+                    component={StationListScreen}
+                    options={{ title: 'Seznam postaj' }}
+                />
+                <Tab.Screen
+                    name="Map"
+                    component={MapScreen}
+                    options={{ title: 'Zemljevid' }}
+                />
+            </Tab.Navigator>
+        </StationsProvider>
+    </NotificationsListener>
 )
 
 /**

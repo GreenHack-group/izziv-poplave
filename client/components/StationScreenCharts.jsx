@@ -54,6 +54,7 @@ export const StationScreenCharts = ({ data }) => {
                 fixLabelOverlap={true}
             >
                 <VictoryLine
+                    interpolation="natural"
                     animate={{
                         onLoad: { duration: 2000 },
                     }}
