@@ -14,5 +14,7 @@ namespace pozivnik.Application.Contracts
         public Task<HydrologicalStationDataDto> GetStationData(string stationId);
 
         public List<MeasurementDto> GetGraphData(string stationId);
+
+        public Task<string> PostDataInDatabase();
     }
 }

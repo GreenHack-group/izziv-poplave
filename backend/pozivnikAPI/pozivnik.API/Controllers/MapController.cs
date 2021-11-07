@@ -44,18 +44,12 @@ namespace pozivnik.API.Controllers
 
         [HttpPost]
         [Route("lastData")]
-        [FunctionName("TimerTriggerCSharp")]
-        public string PostLastDataEntry([TimerTrigger("* 30 * * * *")] TimerInfo myTime) {
+       // [FunctionName("TimerTriggerCSharp")]
+        public async Task<string> PostLastDataEntry(/*[TimerTrigger("* 30 * * * *")] TimerInfo myTime*/) {
             //Every 30 minutes it posts a data entry 
-            var response = "";
+            var response = await _mapService.PostDataInDatabase();
             return response;
         }
 
-        [HttpGet]
-        [Route("meow")]
-        public string getMeow()
-        {
-            return "meow mepw";
-        }
     }               
 }

@@ -4,6 +4,7 @@ using pozivnik.Infrastructure.Interfaces;
 using pozivnik.Persistence.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -30,7 +31,7 @@ namespace pozivnik.Infrastructure.Implementation
         public List<MeasurementDto> FetchGraphData(string stationId)
         {
 
-            var conn = _connectionDB.getDB(stationId);
+            var conn = _connectionDB.getDB();
 
             string sql = "SELECT m.datum_cas, m.vodostaj, m.pretok, m.temperatura_vode "+
                         "FROM meritev m "+
@@ -147,8 +148,93 @@ namespace pozivnik.Infrastructure.Implementation
                 }
             }
 
-
             return null;
+        }
+        public async Task<string> InsertDataInDatabase()
+        {   
+            //Pridobimo XML podatke
+            var xml = await _connectionXML.getXML();
+            XmlNodeList xnList = xml.SelectNodes("/arsopodatki/postaja");
+
+            //Database connection
+            var conn = _connectionDB.getDB();
+            
+            //FILL Postaja
+            foreach (XmlNode xn in xnList)
+            {
+                int stationId = int.Parse(xn.Attributes["sifra"].Value);
+                string stationName = xn["merilno_mesto"].InnerText;
+                float longitude = float.Parse(xn.Attributes["ge_dolzina"].Value);
+                float latitude = float.Parse(xn.Attributes["ge_sirina"].Value);
+                string river = xn["reka"].InnerText;
+                string date = xn["datum"].InnerText;
+
+
+                using var cmd = new MySqlCommand("INSERT INTO postaja (sifra_postaja, ime_postaja, ge_dolzina, ge_sirina, radij, reka, zadnja_sprememba) " +
+                                                 "SELECT @stationId, @stationName, @longitude, @latitude, @radius, @river, @lastchange WHERE NOT EXISTS (SELECT sifra_postaja FROM postaja WHERE sifra_postaja = @stationId) LIMIT 1;", conn);
+
+                cmd.Parameters.AddWithValue("@stationId", stationId);
+                cmd.Parameters.AddWithValue("@stationName", stationName);
+                cmd.Parameters.AddWithValue("@longitude", longitude);
+                cmd.Parameters.AddWithValue("@latitude", latitude);
+                cmd.Parameters.AddWithValue("@radius", 10);
+                cmd.Parameters.AddWithValue("@river", river);
+                cmd.Parameters.AddWithValue("@lastchange", DateTime.MinValue.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+            //FILL Meritev
+           var node = xnList[0];
+            DateTime xmlDate = DateTime.Parse(node["datum"].InnerText); //iz XML
+
+            var conn1 = _connectionDB.getDB();
+
+            int stationId2 = int.Parse(node.Attributes["sifra"].Value);
+            using var cmd1 = new MySqlCommand("SELECT zadnja_sprememba FROM postaja WHERE sifra_postaja = @stationId2", conn1);
+            cmd1.Parameters.AddWithValue("@stationId2", stationId2);
+            using MySqlDataReader rdr = cmd1.ExecuteReader();
+            string zadnja = "";
+            while (rdr.Read())
+            {
+                zadnja = (rdr.GetString(0) == null) ? DateTime.MinValue.ToString() : rdr.GetString(0);
+            }
+
+            conn1.Close();
+            var conn2 = _connectionDB.getDB();
+
+            if (xmlDate > DateTime.Parse(zadnja))
+            {
+                foreach (XmlNode xn in xnList)
+                {
+                    int stationId = int.Parse(xn.Attributes["sifra"].Value);
+                    string date = xn["datum"].InnerText;
+                    float waterLevel = (xn["vodostaj"] == null || xn["vodostaj"].InnerText == "")
+                                        ? 0 : float.Parse(xn["vodostaj"].InnerText);
+                    float waterFlow = (xn["pretok"] == null || xn["pretok"].InnerText == "")
+                                      ? 0 : float.Parse(xn["pretok"].InnerText);
+                    float waterTemperature = (xn["temp_vode"] == null || xn["temp_vode"].InnerText == "")
+                                            ? 0 : float.Parse(xn["temp_vode"].InnerText);
+
+                    using var cmd2 = new MySqlCommand("INSERT INTO meritev VALUES (@stationId, @datum, @waterlevel, @waterflow, @watertemperature, @wave);", conn2);
+                    cmd2.Parameters.AddWithValue("@stationId", stationId);
+                    cmd2.Parameters.AddWithValue("@datum", date);
+                    cmd2.Parameters.AddWithValue("@waterlevel", waterLevel);
+                    cmd2.Parameters.AddWithValue("@waterflow", waterFlow);
+                    cmd2.Parameters.AddWithValue("@watertemperature", waterTemperature);
+                    cmd2.Parameters.AddWithValue("@wave", null);
+
+                    cmd2.ExecuteNonQuery();
+
+                    using var cmd3 = new MySqlCommand("UPDATE postaja SET zadnja_sprememba = @datum;", conn2);
+                    cmd3.Parameters.AddWithValue("@datum", date);
+                    cmd3.ExecuteNonQuery();
+                }
+            }
+            conn2.Close();
+           
+
+            return "hiya boi";
         }
     }
 }

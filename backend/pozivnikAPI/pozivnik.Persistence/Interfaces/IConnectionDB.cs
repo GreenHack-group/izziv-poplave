@@ -9,6 +9,6 @@ namespace pozivnik.Persistence.Interfaces
 {
     public interface IConnectionDB
     {
-        public MySqlConnection getDB(string stationId);
+        public MySqlConnection getDB();
     }
 }

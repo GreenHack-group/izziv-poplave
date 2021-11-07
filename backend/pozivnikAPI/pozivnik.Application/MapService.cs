@@ -36,5 +36,11 @@ namespace pozivnik.Application
 
             return response; 
         }
+
+        public async Task<string> PostDataInDatabase()
+        {
+            var response = await _mapDataClient.InsertDataInDatabase();
+            return response;
+        }
     }
 }

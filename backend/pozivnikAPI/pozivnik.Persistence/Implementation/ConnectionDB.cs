@@ -10,7 +10,7 @@ namespace pozivnik.Persistence.Implementation
 {
     public class ConnectionDB : IConnectionDB
     {
-        public MySqlConnection getDB(string stationId)
+        public MySqlConnection getDB()
         {
             try
             {
