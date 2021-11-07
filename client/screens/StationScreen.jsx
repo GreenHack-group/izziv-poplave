@@ -10,6 +10,8 @@ import { fetchStationById } from '../Api/BackendAPI'
 import OnStartAnimation from '../components/Animations/OnStartAnimation'
 import { StationPropertiesWidgetGraf } from '../components/StationProperties/StationPropertiesWidgetGraf'
 import VodostajIcon from '../components/Icons/VodostajIcon'
+import { RiverIcon } from '../components/Icons/RiverIcon'
+import { WavesIcon } from '../components/Icons/WavesIcon'
 /**
  * Screen to display station info and more
  * @param {object} props
@@ -46,6 +48,28 @@ export const StationScreen = (props) => {
         return <OnStartAnimation />
     }
 
+    function getParsedDate(date) {
+        // TODO
+        date = String(date).split('T')
+        var days = String(date[0]).split('-')
+        var hours = String(date[1]).split(':')
+        return (
+            parseInt(days[2]) +
+            '.' +
+            parseInt(days[1]) -
+            1 +
+            '.' +
+            parseInt(days[0]) +
+            ' | ' +
+            parseInt(hours[0]) +
+            ':' +
+            parseInt(hours[1])
+        )
+        //return [parseInt(days[0]), parseInt(days[1])-1, parseInt(days[2]), parseInt(hours[0]), parseInt(hours[1]), parseInt(hours[2])];
+    }
+    var date = new Date(...getParsedDate('2021-11-06T23:00:00'))
+    console.log('datum: ' + date)
+
     return (
         <StationPropertiesContainer>
             <View>
@@ -63,8 +87,26 @@ export const StationScreen = (props) => {
                 </View>
             </View>
 
-            <Text style={styles.text}>{stationData.river}</Text>
-            <Text style={styles.text}>{stationData.dateAndTime}</Text>
+            <View style={{ flexDirection: 'column' }}>
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.text}>{stationData.river}</Text>
+                        <RiverIcon />
+                    </View>
+
+                    <Text style={styles.text2}>
+                        {getParsedDate(stationData.dateAndTime)}
+                    </Text>
+                </View>
+                <Text style={styles.text1}>
+                    {stationData.waterTemperature} °C
+                </Text>
+            </View>
 
             <View
                 style={{
@@ -79,13 +121,63 @@ export const StationScreen = (props) => {
                             justifyContent: 'space-evenly',
                         }}
                     >
-                        <View>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                            }}
+                        >
                             <VodostajIcon />
-                            <Text>{stationData.waterLevel} m</Text>
+                            <View
+                                style={{
+                                    flexDirection: 'column',
+                                }}
+                            >
+                                <Text> {stationData.waterLevel}</Text>
+                                <Text style={{ color: theme.COLORS.softBlue }}>
+                                    {' '}
+                                    vodostaj v m
+                                </Text>
+                            </View>
                         </View>
                         <Separator />
-                        <View>
-                            <Text>{stationData.waterTemperature} °C</Text>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                            }}
+                        >
+                            <WavesIcon />
+                            <View>
+                                <Text> {stationData.waterFlow}</Text>
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text
+                                        style={{ color: theme.COLORS.softBlue }}
+                                    >
+                                        pretok v{' '}
+                                    </Text>
+                                    <Text
+                                        style={{
+                                            color: theme.COLORS.softBlue,
+                                            fontSize: 15,
+                                        }}
+                                    >
+                                        m
+                                    </Text>
+                                    <Text
+                                        style={{
+                                            color: theme.COLORS.softBlue,
+                                            fontSize: 10,
+                                        }}
+                                    >
+                                        3
+                                    </Text>
+                                    <Text
+                                        style={{ color: theme.COLORS.softBlue }}
+                                    >
+                                        /s
+                                    </Text>
+                                </View>
+                            </View>
                         </View>
                     </View>
                 </StationPropertiesWidgetSmall>
@@ -124,6 +216,17 @@ const styles = StyleSheet.create({
         padding: theme.LAYOUT.paddingMedium,
     },
     text: {
+        fontSize: theme.FONTS.SIZE_MD,
+        paddingHorizontal: theme.LAYOUT.paddingLarge,
+    },
+    text1: {
+        color: theme.COLORS.softBlue,
+        fontSize: theme.FONTS.SIZE_MD,
+        paddingHorizontal: theme.LAYOUT.paddingLarge,
+    },
+    text2: {
+        textAlign: 'right',
+        color: theme.COLORS.softBlue,
         fontSize: theme.FONTS.SIZE_MD,
         paddingHorizontal: theme.LAYOUT.paddingLarge,
     },
