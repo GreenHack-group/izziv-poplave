@@ -264,6 +264,15 @@ namespace pozivnik.Infrastructure.Implementation
                 };
                 listOfStations.Add(temp);
             }
+            conn.Close();
+
+            var conn1 = _connectionDB.getDB();
+            using var cmd1 = new MySqlCommand("INSERT INTO uporabnik VALUES(@token, @ge_dolzina_u, @ge_sirina_u)", conn1);
+            cmd1.Parameters.AddWithValue("@token", user.Token);
+            cmd1.Parameters.AddWithValue("@ge_dolzina_u", user.Location.Longitude.ToString());
+            cmd1.Parameters.AddWithValue("@ge_sirina_u", user.Location.Latitude.ToString());
+            cmd1.ExecuteNonQuery();
+            conn1.Close();
 
             //Harveine
             foreach (SimpleHydroStationDto ele in listOfStations)
@@ -278,14 +287,20 @@ namespace pozivnik.Infrastructure.Implementation
                          Math.Cos(latStation) * Math.Cos(latUser) * Math.Pow(Math.Sin( longUser/ 2.0), 2.0);
                 double res = 6376.5 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
 
-                return res;
+                //return res;
 
                 if (radius > res)
                 {
                     //INSERT user
-                    using var cmd1 = new MySqlCommand("SELECT sifra_postaja, ge_dolzina, ge_sirina, radij FROM postaja", conn);
+                    var conn2 = _connectionDB.getDB();
+                    using var cmd2 = new MySqlCommand("INSERT INTO je_v_blizini VALUES(@token, @sifra_postaja)", conn2);
+                    cmd2.Parameters.AddWithValue("@token", user.Token);
+                    cmd2.Parameters.AddWithValue("@sifra_postaja", ele.stationId.ToString());
+                    cmd2.ExecuteNonQuery();
+                    conn2.Close();
                 }
             }
+            
             return 0;
         }
     }
