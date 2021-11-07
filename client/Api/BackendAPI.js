@@ -17,3 +17,11 @@ export const fetchStationById = async (stationId) => {
     const data = await response.data
     return data
 }
+
+export const fetchChartDataByStationId = async (stationId) => {
+    const response = await backendAPI.get(
+        `/graph?stationId=${parseInt(stationId)}`
+    )
+    const data = await response.data
+    return data
+}

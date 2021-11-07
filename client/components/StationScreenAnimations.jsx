@@ -38,7 +38,6 @@ export const StationScreenAnimations = ({ data }) => {
     const { waterLevelGroup, waterFlowGroup } = data
     const pretok = getLevelBasedOnGroup(waterFlowGroup, WATER_FLOW_LEVELS)
     const vodostaj = getLevelBasedOnGroup(waterLevelGroup, WATER_LEVEL_GROUPS)
-    console.log('vodostaj: ', waterLevelGroup, 'pretok: ', waterFlowGroup)
     if (null === vodostaj && null === pretok) {
         return (
             <View

@@ -13,9 +13,7 @@ export const StationsProvider = (props) => {
 
     const retrieveStationsFromAPI = async () => {
         setLoading(true)
-        console.log('Stations fetching ...')
         const data = await fetchStations()
-        console.log('Got stations ' + data.length)
         setLoading(false)
         setStations(data)
     }

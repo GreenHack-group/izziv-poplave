@@ -6,7 +6,7 @@ import { StationPropertiesWidgetSmall } from '../components/StationProperties/St
 import theme from '../shared/theme'
 import { StationPropertiesWidgetLarge } from '../components/StationProperties/StationPropertiesWidgetLarge'
 import { StationProfileImage } from '../components/StationProperties/StationProfileImage'
-import { fetchStationById } from '../Api/BackendAPI'
+import { fetchChartDataByStationId, fetchStationById } from '../Api/BackendAPI'
 import OnStartAnimation from '../components/Animations/OnStartAnimation'
 import { StationPropertiesWidgetGraf } from '../components/StationProperties/StationPropertiesWidgetGraf'
 import VodostajIcon from '../components/Icons/VodostajIcon'
@@ -33,10 +33,13 @@ export const Separator = () => <View style={styles.separator} />
 export const StationScreen = (props) => {
     const { stationId } = props.route.params
     const [isLoading, setLoading] = useState(true)
+    const [chartLoading, setChartLoading] = useState(true)
+    const [chartData, setChartData] = useState(null)
     const [stationData, setStationData] = useState(null)
 
     useEffect(() => {
         retriveStationData()
+        retriveChartData()
     }, []) // On init
 
     const retriveStationData = async () => {
@@ -44,6 +47,13 @@ export const StationScreen = (props) => {
         const data = await fetchStationById(stationId)
         setLoading(false)
         setStationData(data)
+    }
+
+    const retriveChartData = async () => {
+        setChartLoading(true)
+        const data = await fetchChartDataByStationId(stationId)
+        setChartLoading(false)
+        setChartData(data)
     }
 
     if (isLoading || stationData === null) {
@@ -198,7 +208,11 @@ export const StationScreen = (props) => {
                 </StationPropertiesWidgetLarge>
 
                 <StationPropertiesWidgetGraf>
-                    <StationScreenCharts />
+                    {chartLoading || chartData === null ? (
+                        <OnStartAnimation />
+                    ) : (
+                        <StationScreenCharts data={chartData} />
+                    )}
                 </StationPropertiesWidgetGraf>
             </View>
         </StationPropertiesContainer>
