@@ -12,13 +12,15 @@ import { StationPropertiesWidgetGraf } from '../components/StationProperties/Sta
 import VodostajIcon from '../components/Icons/VodostajIcon'
 import { RiverIcon } from '../components/Icons/RiverIcon'
 import { WavesIcon } from '../components/Icons/WavesIcon'
+import moment from 'moment'
+import { StationScreenAnimations } from '../components/StationScreenAnimations'
+
 /**
  * Screen to display station info and more
  * @param {object} props
  * @returns
  */
 // Will be used to fetch specific station info
-// TODO podatki o postajo in background color
 
 export const Separator = () => <View style={styles.separator} />
 
@@ -28,7 +30,6 @@ export const Separator = () => <View style={styles.separator} />
  * @returns
  */
 export const StationScreen = (props) => {
-    // Will be used to fetch specific station info
     const { stationId } = props.route.params
     const [isLoading, setLoading] = useState(true)
     const [stationData, setStationData] = useState(null)
@@ -48,27 +49,10 @@ export const StationScreen = (props) => {
         return <OnStartAnimation />
     }
 
-    function getParsedDate(date) {
-        // TODO
-        date = String(date).split('T')
-        var days = String(date[0]).split('-')
-        var hours = String(date[1]).split(':')
-        return (
-            parseInt(days[2]) +
-            '.' +
-            parseInt(days[1]) -
-            1 +
-            '.' +
-            parseInt(days[0]) +
-            ' | ' +
-            parseInt(hours[0]) +
-            ':' +
-            parseInt(hours[1])
-        )
-        //return [parseInt(days[0]), parseInt(days[1])-1, parseInt(days[2]), parseInt(hours[0]), parseInt(hours[1]), parseInt(hours[2])];
+    const getParsedDate = (date) => {
+        const formatted = moment(date).format('D.MMMM.YYYY, H.mm')
+        return formatted
     }
-    var date = new Date(...getParsedDate('2021-11-06T23:00:00'))
-    console.log('datum: ' + date)
 
     return (
         <StationPropertiesContainer>
@@ -119,20 +103,31 @@ export const StationScreen = (props) => {
                         style={{
                             flexDirection: 'row',
                             justifyContent: 'space-evenly',
+                            alignItems: 'center',
+                            flex: 1,
                         }}
                     >
                         <View
                             style={{
                                 flexDirection: 'row',
+                                alignItems: 'center',
                             }}
                         >
                             <VodostajIcon />
                             <View
                                 style={{
-                                    flexDirection: 'column',
+                                    paddingLeft: 5,
                                 }}
                             >
-                                <Text> {stationData.waterLevel}</Text>
+                                <Text
+                                    style={{
+                                        fontSize: theme.FONTS.SIZE_XL,
+                                        fontWeight: theme.FONTS.BOLD,
+                                    }}
+                                >
+                                    {' '}
+                                    {stationData.waterLevel}
+                                </Text>
                                 <Text style={{ color: theme.COLORS.softBlue }}>
                                     {' '}
                                     vodostaj v m
@@ -143,13 +138,28 @@ export const StationScreen = (props) => {
                         <View
                             style={{
                                 flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
                             }}
                         >
                             <WavesIcon />
                             <View>
-                                <Text> {stationData.waterFlow}</Text>
+                                <Text
+                                    style={{
+                                        fontSize: theme.FONTS.SIZE_XL,
+                                        fontWeight: theme.FONTS.BOLD,
+                                    }}
+                                >
+                                    {' '}
+                                    {stationData.waterFlow}
+                                </Text>
 
-                                <View style={{ flexDirection: 'row' }}>
+                                <View
+                                    style={{
+                                        flexDirection: 'row',
+                                        marginLeft: 5,
+                                    }}
+                                >
                                     <Text
                                         style={{ color: theme.COLORS.softBlue }}
                                     >
@@ -183,19 +193,7 @@ export const StationScreen = (props) => {
                 </StationPropertiesWidgetSmall>
 
                 <StationPropertiesWidgetLarge>
-                    <View
-                        style={{
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        <View>
-                            <Text>ANIMACIJA VODOSTAJA</Text>
-                        </View>
-                        <View>
-                            <Text>ANIMACIJA PRETOKA</Text>
-                        </View>
-                    </View>
+                    <StationScreenAnimations data={stationData} />
                 </StationPropertiesWidgetLarge>
 
                 <StationPropertiesWidgetGraf>
