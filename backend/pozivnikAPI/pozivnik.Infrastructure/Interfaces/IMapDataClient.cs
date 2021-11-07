@@ -1,4 +1,5 @@
 ﻿using pozivnik.Core.Station;
+using pozivnik.Core.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace pozivnik.Infrastructure.Interfaces
         public Task<List<HydrologicalStationDto>> FetchAllStationsXML();
         public List<MeasurementDto> FetchGraphData(string stationId);
         public Task<string> InsertDataInDatabase();
+        public double ManageUser(UserDto user); //fetch + operacija + insert
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using pozivnik.Application.Contracts;
 using pozivnik.Core.Station;
+using pozivnik.Core.User;
 using pozivnik.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,14 @@ namespace pozivnik.Application
         public async Task<string> PostDataInDatabase()
         {
             var response = await _mapDataClient.InsertDataInDatabase();
+            return response;
+        }
+
+        public double CalculateDistance(UserDto user) 
+        {
+            var response = _mapDataClient.ManageUser(user);
+            //Funkcija foreach za vsako postajo(H)
+
             return response;
         }
     }

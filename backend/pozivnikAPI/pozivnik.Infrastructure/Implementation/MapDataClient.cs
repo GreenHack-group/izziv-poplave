@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using pozivnik.Core.Station;
+using pozivnik.Core.User;
 using pozivnik.Infrastructure.Interfaces;
 using pozivnik.Persistence.Interfaces;
 using System;
@@ -11,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Geolocation;
+using Xamarin.Essentials;
 
 namespace pozivnik.Infrastructure.Implementation
 {
@@ -33,7 +36,7 @@ namespace pozivnik.Infrastructure.Implementation
 
             var conn = _connectionDB.getDB();
 
-            string sql = "SELECT m.datum_cas, m.vodostaj, m.pretok, m.temperatura_vode "+
+            string sql = "SELECT m.datum_cas, m.vodostaj, m.pretok, m.temperatura_voda "+
                         "FROM meritev m "+
                         "WHERE m.sifra_postaja = " + stationId ;
             using var cmd = new MySqlCommand(sql, conn);
@@ -235,6 +238,55 @@ namespace pozivnik.Infrastructure.Implementation
            
 
             return "hiya boi";
+        }
+
+        public double ManageUser(UserDto user)
+        {
+            //Napolnimo postaje
+            var conn = _connectionDB.getDB();
+            using var cmd = new MySqlCommand("SELECT sifra_postaja, ge_dolzina, ge_sirina, radij FROM postaja", conn);
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+
+            List<SimpleHydroStationDto> listOfStations = new List<SimpleHydroStationDto>();
+
+            while (rdr.Read())
+            {
+                int stationId = int.Parse(rdr.GetString(0));
+                float longitude = float.Parse(rdr.GetString(1));
+                float latitude = float.Parse(rdr.GetString(2));
+                int radij = int.Parse(rdr.GetString(3));
+
+                SimpleHydroStationDto temp = new SimpleHydroStationDto {
+                    stationId = stationId,
+                    Longitude = longitude,
+                    Latitude = latitude,
+                    Radius = radij
+                };
+                listOfStations.Add(temp);
+            }
+
+            //Harveine
+            foreach (SimpleHydroStationDto ele in listOfStations)
+            {
+                int radius = ele.Radius;
+                double latStation = ele.Latitude * (Math.PI / 180.0);
+                double longStation = ele.Longitude * (Math.PI / 180.0);
+                double latUser = user.Location.Latitude * (Math.PI / 180.0);
+                double longUser = user.Location.Longitude * (Math.PI / 180.0) - longStation;
+
+                var d3 = Math.Pow(Math.Sin((latUser - latStation) / 2.0), 2.0) +
+                         Math.Cos(latStation) * Math.Cos(latUser) * Math.Pow(Math.Sin( longUser/ 2.0), 2.0);
+                double res = 6376.5 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
+
+                return res;
+
+                if (radius > res)
+                {
+                    //INSERT user
+                    using var cmd1 = new MySqlCommand("SELECT sifra_postaja, ge_dolzina, ge_sirina, radij FROM postaja", conn);
+                }
+            }
+            return 0;
         }
     }
 }

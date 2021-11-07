@@ -15,10 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Geolocation" Version="1.2.1" />
     <PackageReference Include="MySql.Data" Version="8.0.27" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
 
   <ItemGroup>
