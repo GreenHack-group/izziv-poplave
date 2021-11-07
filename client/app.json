@@ -6,7 +6,7 @@
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "splash": {
-            "image": "./assets/splash.png",
+            "image": "./assets/pozivko-ico.png",
             "resizeMode": "contain",
             "backgroundColor": "#ffffff"
         },
@@ -24,7 +24,7 @@
             }
         },
         "web": {
-            "favicon": "./assets/favicon.png"
+            "favicon": "./assets/pozivko-ico.png"
         }
     }
 }
