@@ -27,5 +27,5 @@ export const fetchChartDataByStationId = async (stationId) => {
 }
 
 export const addDeviceNotificationSubscription = async (payload) => {
-    await backendAPI.post('/addUser', payload)
+    // await backendAPI.post('/addUser', payload)
 }

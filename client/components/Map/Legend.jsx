@@ -3,7 +3,7 @@ import { View, StyleSheet, Pressable } from 'react-native'
 import dangerLevels from '../../shared/dangerLevels'
 import theme from '../../shared/theme'
 import MarkerIcon from '../Icons/MarkerIcon'
-import { NormalText, SmallText } from '../PozivkoText'
+import { SmallText } from '../PozivkoText'
 
 export const Legend = () => {
     const [legendOpen, setLegendOpen] = useState(false)

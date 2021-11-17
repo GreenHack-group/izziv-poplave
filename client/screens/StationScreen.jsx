@@ -9,21 +9,11 @@ import { StationProfileImage } from '../components/StationProperties/StationProf
 import { fetchChartDataByStationId, fetchStationById } from '../Api/BackendAPI'
 import OnStartAnimation from '../components/Animations/OnStartAnimation'
 import { StationPropertiesWidgetGraf } from '../components/StationProperties/StationPropertiesWidgetGraf'
-import VodostajIcon from '../components/Icons/VodostajIcon'
 import { RiverIcon } from '../components/Icons/RiverIcon'
-import { WavesIcon } from '../components/Icons/WavesIcon'
 import moment from 'moment'
 import { StationScreenAnimations } from '../components/StationScreenAnimations'
 import { StationScreenCharts } from '../components/StationScreenCharts'
-
-/**
- * Screen to display station info and more
- * @param {object} props
- * @returns
- */
-// Will be used to fetch specific station info
-
-export const Separator = () => <View style={styles.separator} />
+import { StationCurrentData } from '../components/StationCurrentData'
 
 /**
  * Screen to display station info and more
@@ -40,7 +30,7 @@ export const StationScreen = (props) => {
     useEffect(() => {
         retriveStationData()
         retriveChartData()
-    }, []) // On init
+    }, [])
 
     const retriveStationData = async () => {
         setLoading(true)
@@ -110,97 +100,7 @@ export const StationScreen = (props) => {
                 }}
             >
                 <StationPropertiesWidgetSmall>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-evenly',
-                            alignItems: 'center',
-                            flex: 1,
-                        }}
-                    >
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <VodostajIcon />
-                            <View
-                                style={{
-                                    paddingLeft: 5,
-                                }}
-                            >
-                                <Text
-                                    style={{
-                                        fontSize: theme.FONTS.SIZE_XL,
-                                        fontWeight: theme.FONTS.BOLD,
-                                    }}
-                                >
-                                    {' '}
-                                    {stationData.waterLevel}
-                                </Text>
-                                <Text style={{ color: theme.COLORS.softBlue }}>
-                                    {' '}
-                                    vodostaj v m
-                                </Text>
-                            </View>
-                        </View>
-                        <Separator />
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <WavesIcon />
-                            <View>
-                                <Text
-                                    style={{
-                                        fontSize: theme.FONTS.SIZE_XL,
-                                        fontWeight: theme.FONTS.BOLD,
-                                    }}
-                                >
-                                    {' '}
-                                    {stationData.waterFlow}
-                                </Text>
-
-                                <View
-                                    style={{
-                                        flexDirection: 'row',
-                                        marginLeft: 5,
-                                    }}
-                                >
-                                    <Text
-                                        style={{ color: theme.COLORS.softBlue }}
-                                    >
-                                        pretok v{' '}
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            color: theme.COLORS.softBlue,
-                                            fontSize: 15,
-                                        }}
-                                    >
-                                        m
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            color: theme.COLORS.softBlue,
-                                            fontSize: 10,
-                                        }}
-                                    >
-                                        3
-                                    </Text>
-                                    <Text
-                                        style={{ color: theme.COLORS.softBlue }}
-                                    >
-                                        /s
-                                    </Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
+                    <StationCurrentData data={stationData} />
                 </StationPropertiesWidgetSmall>
 
                 <StationPropertiesWidgetLarge>

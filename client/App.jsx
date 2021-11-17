@@ -22,20 +22,7 @@ const Tab = createMaterialTopTabNavigator()
 const HomeTabs = () => (
     <NotificationsListener>
         <StationsProvider>
-            <Tab.Navigator
-                screenOptions={{
-                    tabBarStyle: {
-                        backgroundColor: theme.COLORS.primary,
-                        paddingBottom: theme.LAYOUT.paddingSmall,
-                    },
-                    tabBarActiveTintColor: theme.COLORS.white,
-                    tabBarInactiveTintColor: theme.COLORS.softBlue,
-                    tabBarIndicatorStyle: {
-                        backgroundColor: theme.COLORS.white,
-                        height: 5,
-                    },
-                }}
-            >
+            <Tab.Navigator screenOptions={TabsOptions}>
                 <Tab.Screen
                     name="Stations"
                     component={StationListScreen}
@@ -105,4 +92,17 @@ const HeaderOptions = {
         fontSize: theme.FONTS.SIZE_XL,
     },
     headerRight: () => <PozivkoWhite />,
+}
+
+const TabsOptions = {
+    tabBarStyle: {
+        backgroundColor: theme.COLORS.primary,
+        paddingBottom: theme.LAYOUT.paddingSmall,
+    },
+    tabBarActiveTintColor: theme.COLORS.white,
+    tabBarInactiveTintColor: theme.COLORS.softBlue,
+    tabBarIndicatorStyle: {
+        backgroundColor: theme.COLORS.white,
+        height: 5,
+    },
 }

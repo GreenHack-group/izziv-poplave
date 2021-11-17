@@ -13,7 +13,7 @@ export const StationListScreen = (props) => {
     const [filteredStations, setFilteredStations] = useState([])
 
     useEffect(() => {
-        if (search === null) {
+        if (search === null || !stations) {
             return setFilteredStations(stations)
         }
 
@@ -65,7 +65,7 @@ export const StationListScreen = (props) => {
             />
             <View>
                 <Text style={styles.title}>
-                    {filteredStations.length > 0
+                    {filteredStations && filteredStations.length > 0
                         ? 'Seznam postaj'
                         : 'Pod tem geslom ni postaj'}
                 </Text>

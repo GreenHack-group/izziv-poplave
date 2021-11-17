@@ -2,8 +2,6 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
 import {
-    VictoryClipContainer,
-    VictoryArea,
     VictoryLine,
     VictoryChart,
     VictoryTheme,
@@ -42,7 +40,6 @@ export const StationScreenCharts = ({ data }) => {
         setSelectedButton(idx)
         setSelectedChart(charts[idx])
         setChartLabel(labels[idx])
-        console.log("ID charta: ", idx)
     }
 
     return (
@@ -58,7 +55,7 @@ export const StationScreenCharts = ({ data }) => {
                 width={Dimensions.get('screen').width - 40}
                 theme={VictoryTheme.material}
                 fixLabelOverlap={true}
-                domainPadding={{x: 1, y: 2}}
+                domainPadding={{ x: 1, y: 2 }}
                 padding={{ top: 40, bottom: 30, left: 60, right: 40 }}
             >
                 <VictoryLine
@@ -72,12 +69,17 @@ export const StationScreenCharts = ({ data }) => {
                     }}
                     data={selectedChart}
                 />
-                <VictoryAxis fixLabelOverlap dependentAxis
-                     label={chartLabel}
-                     tickFormat={(t) => `${parseFloat(t).toFixed(2)}`}
-                     tickCount={4}
+                {/* Y axis */}
+                <VictoryAxis
+                    fixLabelOverlap
+                    dependentAxis
+                    label={chartLabel}
+                    tickFormat={(t) => `${parseFloat(t).toFixed(2)}`}
+                    tickCount={4}
                 />
-                <VictoryAxis fixLabelOverlap
+                {/* X axis */}
+                <VictoryAxis
+                    fixLabelOverlap
                     label="Čas (dan/ura)"
                     tickCount={2}
                 />

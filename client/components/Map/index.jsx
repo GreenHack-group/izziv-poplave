@@ -60,7 +60,9 @@ export const Map = (props) => {
                 initialRegion={INITIAL_REGION_SLOVENIA}
                 {...mapOptions}
             >
-                {!props.isLoading && props.markers.map(renderMarker)}
+                {!props.isLoading &&
+                    props.markers &&
+                    props.markers.map(renderMarker)}
             </MapView>
             <Legend />
         </View>

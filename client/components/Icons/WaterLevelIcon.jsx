@@ -1,7 +1,7 @@
 import React from 'react'
 import Svg, { G, Path, Defs, ClipPath, Rect } from 'react-native-svg'
 
-const VodostajIcon = () => {
+export const WaterLevelIcon = () => {
     return (
         <Svg
             width="19"
@@ -44,5 +44,3 @@ const VodostajIcon = () => {
         </Svg>
     )
 }
-
-export default VodostajIcon

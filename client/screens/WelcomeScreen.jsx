@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Pressable, View, Text, StyleSheet, Dimensions } from 'react-native'
-import { Container } from '../components/Container'
+import {
+    Pressable,
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    SafeAreaView,
+    StatusBar,
+} from 'react-native'
 import theme from '../shared/theme'
 import { NavigationDots } from '../components/NavigationDots'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import PozivkoIcon from '../components/Icons/PozivkoIcon'
 import { DefaultButton } from '../components/DefaultButton'
 import { SmallText, HeaderText } from '../components/PozivkoText'
@@ -68,14 +74,13 @@ export const WelcomeScreen = (props) => {
     }
 
     return (
-        <SafeAreaView style={styles.welcomeWrapper}>
-            <Container>
-                <View style={styles.layoutContainer}>
-                    <PozivkoIcon />
-                    <View>{renderSubScreen()}</View>
-                    <NavigationDots active={subScreen} />
-                </View>
-            </Container>
+        <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar animated backgroundColor={theme.COLORS.primary} />
+            <View style={styles.welcomeWrapper}>
+                <PozivkoIcon />
+                <View>{renderSubScreen()}</View>
+                <NavigationDots active={subScreen} />
+            </View>
         </SafeAreaView>
     )
 }
@@ -114,12 +119,14 @@ const NotificationPermissionScreen = (props) => {
     return (
         <View style={{ alignItems: 'center', width: '100%', flex: 1 }}>
             <WelcomScreenAnimation
-                style={{ height: Dimensions.get('window').height * 0.4 }}
+                style={{
+                    height: Dimensions.get('window').height * 0.4,
+                    width: '100%',
+                }}
                 animation={require('../assets/animations/dovoljenje_notification.json')}
             />
             <View
                 style={{
-                    flex: 0.6,
                     justifyContent: 'flex-end',
                     alignItems: 'center',
                 }}
@@ -204,7 +211,7 @@ const YouAreAllSetupScreen = (props) => {
             <WelcomScreenAnimation
                 style={{
                     height: Dimensions.get('window').height * 0.6,
-                    marginLeft: 30,
+                    width: '100%',
                 }}
                 animation={require('../assets/animations/all_set.json')}
                 onAnimationFinished={props.onClickNext}
@@ -224,18 +231,12 @@ const subScreenProps = {
 
 const styles = StyleSheet.create({
     welcomeWrapper: {
+        flex: 1,
         backgroundColor: theme.COLORS.background,
         paddingHorizontal: theme.LAYOUT.paddingLarge * 2,
-        flex: 1,
-        marginHorizontal: 'auto',
+        paddingVertical: theme.LAYOUT.paddingLarge * 2,
         alignItems: 'center',
-    },
-    layoutContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingTop: theme.LAYOUT.paddingLarge * 2,
-        paddingBottom: theme.LAYOUT.paddingLarge * 3,
+        justifyContent: 'center',
     },
     denyAccess: {
         color: theme.COLORS.softBlue,

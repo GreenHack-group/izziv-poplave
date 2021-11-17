@@ -4,9 +4,6 @@ import { View, StyleSheet } from 'react-native'
 import theme from '../../shared/theme'
 
 /**
- * A simple container that wraps screen
- * and gives some common padding to the sides
- * default bg and text color
  *
  * @param {object} props
  * @returns

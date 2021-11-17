@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import LottieView from 'lottie-react-native'
-import { StyleSheet } from 'react-native'
 
 export const WelcomScreenAnimation = (props) => {
     return (

@@ -4,9 +4,6 @@ import { View, StyleSheet } from 'react-native'
 import theme from '../../shared/theme'
 
 /**
- * A simple container that wraps screen
- * and gives some common padding to the sides
- * default bg and text color
  *
  * @param {object} props
  * @returns
@@ -17,7 +14,6 @@ export const StationPropertiesWidgetGraf = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        //paddingVertical: theme.LAYOUT.paddingLarge,
         backgroundColor: theme.COLORS.white,
         marginVertical: 5,
         color: theme.COLORS.black,
