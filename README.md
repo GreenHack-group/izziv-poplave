@@ -1,7 +1,7 @@
 # Pozivko (F1)
 
 <p align="center">
-  <img src="https://github.com/GreenHack-group/izziv-poplave/blob/master/client/assets/pozivko-ico.png" />
+  <img width='50%' heigth='50%' src="https://github.com/GreenHack-group/izziv-poplave/blob/master/client/assets/pozivko-ico.png" />
 </p>
 
 Pozivko is a mobile application for iOS and Android which offers informational and up to the point visualisations of Hydrological station measurements in Slovenia.
